@@ -36,7 +36,7 @@ export function ToastProvider({ children }) {
       {children}
       {createPortal(
         <div
-          className="toast | text-000 py-000 px-00 bg-blue text-gray-100 radius-2"
+          className="toast | shadow text-000 py-000 px-00 bg-blue text-gray-100 radius-2"
           data-state={state.current}>
           {label}
         </div>,

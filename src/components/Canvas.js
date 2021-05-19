@@ -7,22 +7,17 @@ import ReactFlow, {
   Controls,
 } from 'react-flow-renderer';
 import StateNode from './StateNode';
-import AddState from './AddButton';
 import Sidebar from './Sidebar';
-import InfoButton from './InfoButton';
+import ButtonBar from './Buttons';
 import Connection from './Connection';
-
-const nodeTypes = {
-  state: StateNode,
-};
 
 let id = 0;
 const getId = () => `dndnode_${id++}`;
 
-export default function Canvas({ init }) {
+export default function Canvas() {
   const reactFlowWrapper = useRef(null);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
-  const [elements, setElements] = useState(init);
+  const [elements, setElements] = useState([]);
 
   const onElementsRemove = (elementsToRemove) =>
     setElements((els) => removeElements(elementsToRemove, els));
@@ -65,10 +60,7 @@ export default function Canvas({ init }) {
     event.dataTransfer.dropEffect = 'move';
   };
 
-  const onLoad = (_reactFlowInstance) =>
-    setReactFlowInstance(_reactFlowInstance);
-
-  function updateElement(v, id, isEdge) {
+  const updateElement = (v, id, isEdge) =>
     setElements((es) =>
       es.map((e) => {
         if (e.id !== id) return e;
@@ -80,7 +72,6 @@ export default function Canvas({ init }) {
         return newEl;
       })
     );
-  }
 
   return (
     <ReactFlowProvider>
@@ -94,17 +85,16 @@ export default function Canvas({ init }) {
           onEdgeUpdate={onEdgeUpdate}
           connectionMode="loose"
           deleteKeyCode={8} /* 'backspace'-key */
-          onLoad={onLoad}
+          onLoad={setReactFlowInstance}
           onDrop={onDrop}
           multiSelectionKeyCode={null}
           onDragOver={onDragOver}
-          nodeTypes={nodeTypes}>
+          nodeTypes={{ state: StateNode }}>
           <Controls />
         </ReactFlow>
       </main>
       <Sidebar onUpdateElement={updateElement} />
-      <AddState />
-      <InfoButton />
+      <ButtonBar />
       <svg width="0" height="0">
         <defs>
           <marker

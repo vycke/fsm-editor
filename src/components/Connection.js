@@ -12,7 +12,7 @@ export default function Connection({
     <g>
       <path
         fill="none"
-        stroke="#222"
+        stroke="#444"
         strokeWidth={1.5}
         className="animated"
         d={`M${sourceX},${sourceY} C ${sourceX} ${targetY} ${sourceX} ${targetY} ${targetX},${targetY}`}
@@ -22,7 +22,7 @@ export default function Connection({
         cy={targetY}
         fill="#fff"
         r={3}
-        stroke="#222"
+        stroke="#444"
         strokeWidth={1.5}
       />
     </g>

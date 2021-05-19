@@ -4,6 +4,7 @@ import useFsm from 'hooks/useFsm';
 import stateToCode from 'helpers/stateToCode';
 import { FiClipboard } from 'react-icons/fi';
 import useToastManager from './Toast';
+import GithubCorner from './GithubCorner';
 
 const states = {
   open: { on: { CHANGE: 'closed' } },
@@ -20,14 +21,16 @@ export default function Sidebar({ onUpdateElement }) {
     if (el?.source) return edges.find((e) => e.id === el.id);
     return el;
   });
-  const type = selected?.source ? 'Edge' : 'Node';
+  const isEdge = selected?.source ? true : false;
 
   function handleUpdate(v) {
     if (!selected) return;
-    onUpdateElement(v.target.value, selected.id, type === 'Edge');
+    onUpdateElement(v.target.value, selected.id, isEdge);
   }
 
   const code = stateToCode(nodes, edges);
+
+  const title = isEdge ? 'Edge' : 'Node';
 
   async function handleCopy() {
     await navigator.clipboard.writeText(JSON.stringify(code, null, 2));
@@ -35,7 +38,7 @@ export default function Sidebar({ onUpdateElement }) {
   }
 
   return (
-    <aside className="sidebar | flex-row" data-state={state.current}>
+    <aside className="sidebar | flex-row shadow" data-state={state.current}>
       <button
         className="bg-gray-200 px-000 text-blue text-1"
         onClick={() => state.send('CHANGE')}>
@@ -44,12 +47,12 @@ export default function Sidebar({ onUpdateElement }) {
       <div className="flex-col items-start p-0 bg-gray-500 text-gray-100">
         {selected && (
           <>
-            <h2 className="text-1 mb-0">{`${type} settings`}</h2>
-            <label className="text-00 text-gray-200 italic">{`${type} name:`}</label>
+            <h2 className="text-1 mb-0">{`${title} settings`}</h2>
+            <label className="text-00 text-gray-200 italic">{`${title} name:`}</label>
             <input
-              value={type === 'Edge' ? selected.label : selected.data.label}
+              value={isEdge ? selected.label : selected.data.label}
               onChange={handleUpdate}
-              className="mb-3 px-00 py-000 radius-1 border-gray-300 focus:border-blue border-w-2 no-outline"
+              className="mb-3 px-00 py-000 radius-1 border-gray-300 focus:border-blue border-w-2 no-outline full-width"
             />
           </>
         )}
@@ -67,28 +70,10 @@ export default function Sidebar({ onUpdateElement }) {
           </pre>
         </details>
 
-        {/* <h2 className="text-1 mb-0">State machine configuration</h2> */}
-
         <footer className="self-end py-000 px-0 text-000 text-gray-200">
-          Version {packageJson.version}{' '}
-          <a
-            href="https://github.com/kevtiq/fsm-editor"
-            title="Link to the open source GitHub page">
-            GitHub
-          </a>
-          . Configurations with:{' '}
-          <a
-            href="https://github.com/kevtiq/fsm"
-            title="Link to the open source GitHub page of the fsm package">
-            fsm
-          </a>{' '}
-          and{' '}
-          <a
-            href="https://github.com/davidkpiano/xstate"
-            title="Link to the open source GitHub page of xstate">
-            xstate
-          </a>
+          Version {packageJson.version}
         </footer>
+        <GithubCorner />
       </div>
     </aside>
   );

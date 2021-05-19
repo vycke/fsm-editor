@@ -15,8 +15,7 @@ body {
 *******/
 @import './sidebar';
 @import './buttons';
-@import './flow';
-@import './details';
+@import './canvas';
 @import './toasts';
 
 .no-outline:focus {
@@ -25,4 +24,8 @@ body {
 
 .full-width {
   width: 100%;
+}
+
+.shadow {
+  box-shadow: var(--elevation-2);
 }

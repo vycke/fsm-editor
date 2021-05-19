@@ -1,32 +1,19 @@
-.add-button {
+.btn-bar {
   position: absolute;
   z-index: 100;
-  top: 32px;
-  left: 32px;
-  width: 50px;
-  height: 50px;
-  line-height: 45px;
-  text-align: center;
-  box-shadow: var(--elevation-2);
+  top: 0;
+  left: 0;
+
+  .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+  }
 }
 
-.add-button span [data-tooltip] {
-  position: relative;
-}
-
-.info-button {
-  position: absolute;
-  z-index: 100;
-  top: 42px;
-  left: 102px;
-  width: 30px;
-  height: 30px;
-  line-height: 28px;
-  text-align: center;
-  box-shadow: var(--elevation-2);
-}
-
-.add-button span [data-tooltip] {
+[data-tooltip] {
   position: relative;
 }
 
@@ -42,7 +29,8 @@
   background-color: var(--color-gray-500);
   color: var(--color-gray-100);
 
-  top: 120%;
+  top: 110%;
+  left: 20px;
   width: 200px;
 
   text-align: center;
@@ -52,10 +40,24 @@
 [data-tooltip]:hover::after {
   content: '';
   position: absolute;
-  bottom: -20%;
+  bottom: -10%;
   left: 50%;
   margin-top: calc(-1 * var(--spacing-000));
   border-width: 5px;
   border-style: solid;
   border-color: transparent transparent var(--color-gray-500) transparent;
+}
+
+.github-corner {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  .triangle {
+    fill: var(--color-gray-100);
+  }
+
+  .octo {
+    fill: var(--color-gray-500);
+  }
 }
