@@ -76,6 +76,18 @@ export default function Sidebar({ onUpdateElement }) {
             title="Link to the open source GitHub page">
             GitHub
           </a>
+          . Configurations with:{' '}
+          <a
+            href="https://github.com/kevtiq/fsm"
+            title="Link to the open source GitHub page of the fsm package">
+            fsm
+          </a>{' '}
+          and{' '}
+          <a
+            href="https://github.com/davidkpiano/xstate"
+            title="Link to the open source GitHub page of xstate">
+            xstate
+          </a>
         </footer>
       </div>
     </aside>
