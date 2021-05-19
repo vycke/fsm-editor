@@ -23,7 +23,7 @@
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-unused-imports": "^1.1.1",
-    "node-sass": "5",
+    "postcss-custom-properties": "^10.0.0",
     "prettier": "^2.2.1"
   },
   "scripts": {
@@ -43,5 +43,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "resolutions": {
+    "react-scripts/postcss-preset-env/postcss-custom-properties": "^10.0.0"
   }
 }
