@@ -10,6 +10,7 @@ import StateNode from './StateNode';
 import AddState from './AddButton';
 import Sidebar from './Sidebar';
 import InfoButton from './InfoButton';
+import Connection from './Connection';
 
 const nodeTypes = {
   state: StateNode,
@@ -31,9 +32,8 @@ export default function Canvas({ init }) {
       addEdge(
         {
           ...params,
-          animated: true,
-          arrowHeadType: 'arrowclosed',
-          label: 'label',
+          label: 'event',
+          style: { stroke: '#444', strokeWidth: '2' },
         },
         els
       )
@@ -73,30 +73,24 @@ export default function Canvas({ init }) {
       es.map((e) => {
         if (e.id !== id) return e;
 
-        console.log(id, e);
-
         const newEl = { ...e };
-
-        console.log(newEl);
-
         if (isEdge) newEl.label = v;
         else newEl.data.label = v;
 
         return newEl;
       })
     );
-
-    console.log(v, id, isEdge);
-    console.log(elements);
   }
 
   return (
     <ReactFlowProvider>
       <main className="reactflow-wrapper" ref={reactFlowWrapper}>
         <ReactFlow
+          markerEndId="my-marker"
           elements={elements}
           onElementsRemove={onElementsRemove}
           onConnect={onConnect}
+          connectionLineComponent={Connection}
           onEdgeUpdate={onEdgeUpdate}
           connectionMode="loose"
           deleteKeyCode={8} /* 'backspace'-key */
@@ -111,6 +105,24 @@ export default function Canvas({ init }) {
       <Sidebar onUpdateElement={updateElement} />
       <AddState />
       <InfoButton />
+      <svg width="0" height="0">
+        <defs>
+          <marker
+            id="my-marker"
+            markerWidth="25"
+            markerHeight="25"
+            viewBox="-20 -20 40 40"
+            orient="auto">
+            <polyline
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="1"
+              fill="#444"
+              points="-10,-8 0,0 -10,8 -10,-8"
+            />
+          </marker>
+        </defs>
+      </svg>
     </ReactFlowProvider>
   );
 }
