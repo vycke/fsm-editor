@@ -1,0 +1,32 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "react-app",
+    "react-app/jest",
+    "eslint-config-prettier",
+    "plugin:jsx-a11y/recommended"
+  ],
+   "globals": {
+        "i18n": false
+    },
+  "plugins": ["prettier", "jsx-a11y", "react-hooks", "unused-imports"],
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "no-unused-vars": "off",
+		"unused-imports/no-unused-imports": "error"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": ["node_modules", "src/"]
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.node {
+  border-color: var(--color-gray-400);
+
+  > .react-flow__handle {
+    background-color: var(--color-gray-400);
+  }
+}
+
+.node[data-selected='true'] {
+  border-color: var(--color-blue);
+
+  > .react-flow__handle {
+    background-color: var(--color-blue);
+  }
+}
