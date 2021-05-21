@@ -1,0 +1,53 @@
+.node {
+  border-color: var(--color-gray-400);
+  background-color: var(--color-gray-100);
+  line-height: 1.2;
+
+  > .react-flow__handle {
+    background-color: var(--color-gray-400);
+  }
+}
+
+.node[data-selected='true'] {
+  border-color: var(--color-blue);
+
+  > .react-flow__handle {
+    background-color: var(--color-blue);
+  }
+}
+
+footer {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 100;
+}
+
+.github-corner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scale(-1, 1);
+  z-index: 100;
+
+  .triangle {
+    fill: var(--color-gray-300);
+  }
+
+  .octo {
+    fill: var(--color-gray-100);
+  }
+}
+
+a,
+a:link,
+a:visited,
+a:active {
+  text-decoration-color: var(--color-blue);
+  text-decoration-thickness: 1px;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--color-blue);
+}

@@ -1,4 +1,3 @@
-import delay from 'helpers/delay';
 import useFsm from 'hooks/useFsm';
 import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
@@ -7,10 +6,10 @@ const states = {
   visible: {
     on: {
       REMOVED: 'notvisible',
+      CREATED: 'visible',
     },
-    entry: async (send) => {
-      await delay(6000);
-      send('REMOVED');
+    entry: (send) => {
+      send('REMOVED', { delay: 6000 });
     },
   },
   notvisible: {

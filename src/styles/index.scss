@@ -13,13 +13,19 @@ body {
 /*******
 * Custom styles
 *******/
-@import './sidebar';
-@import './buttons';
-@import './canvas';
-@import './toasts';
+@import './blocks/sidebar';
+@import './blocks/canvas';
+@import './blocks/toasts';
+@import './blocks/toolbar';
+@import './blocks/tooltip';
+@import './blocks/modal';
 
 .no-outline:focus {
   outline: none;
+}
+
+.transition {
+  transition: var(--transition);
 }
 
 .full-width {
@@ -28,4 +34,8 @@ body {
 
 .shadow {
   box-shadow: var(--elevation-2);
+}
+
+pre > code {
+  line-height: 1.2;
 }
