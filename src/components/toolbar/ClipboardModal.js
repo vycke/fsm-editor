@@ -3,7 +3,7 @@ import Modal from '../Modal';
 import { FiClipboard } from 'react-icons/fi';
 import { useStoreState } from 'react-flow-renderer';
 import useToastManager from '../Toast';
-import { objectToCode, stateToCode } from 'helpers/code';
+import { stateToConfiguration, stringify } from 'helpers/code';
 
 export default function ClipboardModal({ children }) {
   const [show, setShow] = useState(false);
@@ -11,10 +11,10 @@ export default function ClipboardModal({ children }) {
   const edges = useStoreState((store) => store.edges);
   const { add } = useToastManager();
 
-  const code = show ? stateToCode(nodes, edges) : '';
+  const code = show ? stateToConfiguration(nodes, edges) : '';
 
   async function handleCopy() {
-    await navigator.clipboard.writeText(objectToCode(code));
+    await navigator.clipboard.writeText(stringify(code));
     add('Configuration copied to your clipboard!');
   }
 
@@ -32,7 +32,7 @@ export default function ClipboardModal({ children }) {
             <span className="italic ml-00">Copy configuration</span>{' '}
           </button>
           <pre className="bg-gray-400 p-000 full-width">
-            <code>{objectToCode(code)}</code>
+            <code>{stringify(code)}</code>
           </pre>
         </Modal>
       )}

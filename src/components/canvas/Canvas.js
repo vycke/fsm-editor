@@ -1,12 +1,10 @@
+import generateId from 'helpers/generateId';
 import { useState } from 'react';
 import ReactFlow, { addEdge, updateEdge } from 'react-flow-renderer';
 
 import ConnectionLine from './ConnectionLine';
 import StateNode from './StateNode';
 import TransitionEdge from './TransitionEdge';
-
-let id = 0;
-const getId = () => `dndnode_${id++}`;
 
 export default function Canvas({ wrapper, elements, setElements }) {
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
@@ -29,7 +27,7 @@ export default function Canvas({ wrapper, elements, setElements }) {
       y: event.clientY - reactFlowBounds.top,
     });
     const newNode = {
-      id: getId(),
+      id: generateId(),
       type,
       position,
       data: { label: `new ${type}` },

@@ -3,7 +3,6 @@ import Modal from '../Modal';
 import { FiClipboard } from 'react-icons/fi';
 import { useStoreState } from 'react-flow-renderer';
 import useToastManager from '../Toast';
-import { objectToCode, stateToCode } from 'helpers/code';
 
 export default function ShareModal({ children }) {
   const [show, setShow] = useState(false);
@@ -11,12 +10,9 @@ export default function ShareModal({ children }) {
   const edges = useStoreState((store) => store.edges);
   const { add } = useToastManager();
 
-  const code = stateToCode(nodes, edges);
+  // const code = stateToCode(nodes, edges);
 
-  async function handleCopy() {
-    await navigator.clipboard.writeText(objectToCode(code));
-    add('Configuration copied to your clipboard!');
-  }
+  function handleCopy() {}
 
   return (
     <>

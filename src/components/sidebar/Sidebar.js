@@ -89,8 +89,8 @@ export default function Sidebar({ onRemoveElement, setElements }) {
               ---
             </option>
             {edges?.map((e, i) => (
-              <option key={i} value={e.label}>
-                {e.label}
+              <option key={i} value={e.data.label}>
+                {e.data.label}
               </option>
             ))}
           </select>
