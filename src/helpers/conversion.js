@@ -82,6 +82,22 @@ function machineToConfig(nodes, edges) {
   return config;
 }
 
+function configToMachine(config) {
+  const nodes = [];
+  const edges = [];
+
+  Object.entries(config).forEach(([k, v], i) => {
+    nodes.push({
+      id: i,
+      position: { x: 0, y: 0 },
+      type: 'state',
+      data: { label: k },
+    });
+  });
+
+  return nodes;
+}
+
 export function stringifyMachine(nodes, edges) {
   return JSON.stringify(machineToConfig(nodes, edges), null, 2)
     .replaceAll('"[', '')
@@ -93,5 +109,5 @@ export function machineToBase64(nodes, edges) {
 }
 
 export function base64ToMachine(str) {
-  return decompress(decode64(str));
+  return configToMachine(JSON.parse(decompress(decode64(str))));
 }
