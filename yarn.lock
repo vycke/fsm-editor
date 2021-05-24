@@ -1214,10 +1214,10 @@
   resolved "https://registry.yarnpkg.com/@crinkle/feo/-/feo-1.3.2.tgz#942cf4f8032b4ee5d39fda4655bc01f3896b70c5"
   integrity sha512-LQ3a1XISBR3+G8fMg8BkiC8nZT/Ft6gapCaIQguGDwfh3dqDfbdGruK9fYD0Rlvdp548lg+Kj1nf0aRI2RM0Dg==
 
-"@crinkle/fsm@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@crinkle/fsm/-/fsm-0.3.0.tgz#6c1a0eb8d152a1facd3ddc80e5bc88b5dbca9b8a"
-  integrity sha512-CigJ1m4flo7zfpfMS6v3TBTI2mT39Nuq0mGpjE2u9K7nY7BKjFH4cABfusGIbjia4mtgtz5n1cs9cHmuMQNlEg==
+"@crinkle/fsm@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@crinkle/fsm/-/fsm-0.4.0.tgz#f0f1a50275c7677d6f6e19dd0adef7c8d14ff2b8"
+  integrity sha512-jOlRphga/uVyhDCTKDeQcKhZNbYy7XyhbVR3Gmgsham3iI1zm/fUcE3V6bXGhjMtbKhqLQF0kYk/ZmNog6ziag==
 
 "@csstools/convert-colors@^1.4.0":
   version "1.4.0"

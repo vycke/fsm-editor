@@ -1,8 +1,8 @@
 import { cloneElement, useState } from 'react';
-import Modal from './Modal';
+import Modal from '../Modal';
 import { FiClipboard } from 'react-icons/fi';
 import { useStoreState } from 'react-flow-renderer';
-import useToastManager from './Toast';
+import useToastManager from '../Toast';
 import { objectToCode, stateToCode } from 'helpers/code';
 
 export default function ClipboardModal({ children }) {
@@ -11,7 +11,7 @@ export default function ClipboardModal({ children }) {
   const edges = useStoreState((store) => store.edges);
   const { add } = useToastManager();
 
-  const code = stateToCode(nodes, edges);
+  const code = show ? stateToCode(nodes, edges) : '';
 
   async function handleCopy() {
     await navigator.clipboard.writeText(objectToCode(code));

@@ -23,7 +23,15 @@ export function stateToCode(nodes, edges) {
     const { data: target } = nodes.find((n) => n.id === e.target);
 
     if (!config[source.label].on) config[source.label].on = {};
-    config[source.label].on[e.label] = target.label;
+
+    if (e.data.guard) {
+      config[source.label].on[e.data.label] = {
+        target: target.label,
+        cond: `[(ctx) => ${e.data.guard}]`,
+      };
+    } else {
+      config[source.label].on[e.data.label] = target.label;
+    }
   });
 
   return config;

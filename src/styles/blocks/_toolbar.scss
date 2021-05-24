@@ -9,6 +9,10 @@ main {
   transform: translateX(-50%);
   z-index: 100;
 
+  > *[data-active='true'] {
+    background-color: var(--color-gray-400);
+  }
+
   > * + * {
     border-left: 1px solid var(--color-gray-300);
   }

@@ -1,5 +1,5 @@
 import { cloneElement, useState } from 'react';
-import Modal from './Modal';
+import Modal from '../Modal';
 
 export default function HelpModal({ children }) {
   const [show, setShow] = useState(false);
