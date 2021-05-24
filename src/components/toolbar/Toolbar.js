@@ -41,11 +41,7 @@ export default function Toolbar() {
           <BiCodeCurly />
         </ToolbarItem>
       </ClipboardModal>
-      {/* <ShareModal>
-        <ToolbarItem data-tooltip="Share your current diagram">
-          <FiShare />
-        </ToolbarItem>
-      </ShareModal> */}
+
       <HelpModal>
         <ToolbarItem data-tooltip="You can use the 'backspace' key to delete a selected element">
           <FiHelpCircle />

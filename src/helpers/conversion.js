@@ -1,55 +1,3 @@
-function decode64(str) {
-  // Going backwards: from bytestream, to percent-encoding, to original string.
-  return decodeURIComponent(
-    atob(str)
-      .split('')
-      .map(function (c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-      })
-      .join('')
-  );
-}
-
-function encode64(str) {
-  // first we use encodeURIComponent to get percent-encoded UTF-8,
-  // then we convert the percent encodings into raw bytes which
-  // can be fed into btoa.
-  return btoa(
-    encodeURIComponent(str).replace(
-      /%([0-9A-F]{2})/g,
-      function toSolidBytes(match, p1) {
-        return String.fromCharCode('0x' + p1);
-      }
-    )
-  );
-}
-
-function compress(str) {
-  return (
-    str
-      //compress delay information
-      .replaceAll(/, \{ delay:\s*(.*?)\s*\}}/gm, ';d=$1')
-      // compress entry effects
-      .replaceAll(/"entry":"\[\(send\) => send\('(.*?)'\)\]"/gm, '@s=>$1@')
-      // .replaceAll(/"cond":"\[\(ctx\) => (.*?)\]"/gm, 'ctx::$1')
-      // compress transitions with guards
-      .replaceAll(
-        /\{"target":"(.*?)","cond":"\[\(ctx\) => (.*?)\]"}/gm,
-        '#$1;ctx=>$2#'
-      )
-  );
-}
-
-function decompress(str) {
-  return str
-    .replaceAll(
-      /#(.*?);ctx=>(.*?)#/gm,
-      '{"target":"$1","cond":"[(ctx) => $2]"}'
-    )
-    .replaceAll(/@s=>(.*?)@/gm, '"entry":"[(send) => send(\'$1\')]"')
-    .replaceAll(/;d=(.*?)]/gm, ', { delay: $1 }]');
-}
-
 function machineToConfig(nodes, edges) {
   // Initial convertion
   const config = {};
@@ -82,32 +30,8 @@ function machineToConfig(nodes, edges) {
   return config;
 }
 
-function configToMachine(config) {
-  const nodes = [];
-  const edges = [];
-
-  Object.entries(config).forEach(([k, v], i) => {
-    nodes.push({
-      id: i,
-      position: { x: 0, y: 0 },
-      type: 'state',
-      data: { label: k },
-    });
-  });
-
-  return nodes;
-}
-
 export function stringifyMachine(nodes, edges) {
   return JSON.stringify(machineToConfig(nodes, edges), null, 2)
     .replaceAll('"[', '')
     .replaceAll(']"', '');
-}
-
-export function machineToBase64(nodes, edges) {
-  return encode64(compress(JSON.stringify(machineToConfig(nodes, edges))));
-}
-
-export function base64ToMachine(str) {
-  return configToMachine(JSON.parse(decompress(decode64(str))));
 }
