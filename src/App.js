@@ -6,8 +6,13 @@ import { useRef, useState } from 'react';
 import { ReactFlowProvider } from 'react-flow-renderer';
 import packageJson from '../package.json';
 import Sidebar from 'components/sidebar/Sidebar';
+import { base64ToMachine } from 'helpers/conversion';
 
 export default function App({ children }) {
+  const config = base64ToMachine(window.location.pathname.replace('/', ''));
+
+  console.log(config);
+
   const reactFlowWrapper = useRef(null);
   const [elements, setElements] = useState([]);
 

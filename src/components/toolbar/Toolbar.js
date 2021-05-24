@@ -4,14 +4,12 @@ import {
   FiPlusCircle,
   FiImage,
   FiMaximize,
-  FiShare,
 } from 'react-icons/fi';
 import { BiCodeCurly } from 'react-icons/bi';
 import ClipboardModal from './ClipboardModal';
 import HelpModal from './HelpModal';
 import { useZoomPanHelper } from 'react-flow-renderer';
 import ToolbarItem from './ToolbarItem';
-import ShareModal from './ShareModal';
 
 export default function Toolbar() {
   const downloadImage = useCreateImage('my-canvas');
@@ -43,11 +41,11 @@ export default function Toolbar() {
           <BiCodeCurly />
         </ToolbarItem>
       </ClipboardModal>
-      <ShareModal>
+      {/* <ShareModal>
         <ToolbarItem data-tooltip="Share your current diagram">
           <FiShare />
         </ToolbarItem>
-      </ShareModal>
+      </ShareModal> */}
       <HelpModal>
         <ToolbarItem data-tooltip="You can use the 'backspace' key to delete a selected element">
           <FiHelpCircle />

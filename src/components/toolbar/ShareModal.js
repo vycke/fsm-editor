@@ -3,6 +3,7 @@ import Modal from '../Modal';
 import { FiClipboard } from 'react-icons/fi';
 import { useStoreState } from 'react-flow-renderer';
 import useToastManager from '../Toast';
+import { machineToBase64 } from 'helpers/conversion';
 
 export default function ShareModal({ children }) {
   const [show, setShow] = useState(false);
@@ -10,9 +11,13 @@ export default function ShareModal({ children }) {
   const edges = useStoreState((store) => store.edges);
   const { add } = useToastManager();
 
-  // const code = stateToCode(nodes, edges);
+  async function handleCopy() {
+    const compressed = machineToBase64(nodes, edges);
+    const link = `${window.location.origin}/?code=${compressed}`;
 
-  function handleCopy() {}
+    await navigator.clipboard.writeText(link);
+    add('Link copied to your clipboard!');
+  }
 
   return (
     <>
