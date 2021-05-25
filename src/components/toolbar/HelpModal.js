@@ -8,7 +8,7 @@ export default function HelpModal({ children }) {
     <>
       {cloneElement(children, { onClick: () => setShow(!show), active: show })}
       {show && (
-        <Modal title="Help" onClose={() => setShow(false)}>
+        <Modal title="Help" onClose={() => setShow(false)} show={show}>
           <p>
             The editor allows minimal features around creating state machines:
           </p>

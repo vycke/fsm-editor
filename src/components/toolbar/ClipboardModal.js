@@ -28,7 +28,8 @@ export default function ClipboardModal({ children }) {
       {show && (
         <Modal
           title="Finite state machine configuration"
-          onClose={() => setShow(false)}>
+          onClose={() => setShow(false)}
+          show={show}>
           <button
             className="text-gray-100 flex-row items-center"
             onClick={handleCopy}>

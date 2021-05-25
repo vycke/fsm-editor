@@ -15,7 +15,7 @@ export default function SettingsModal({ children }) {
     <>
       {cloneElement(children, { onClick: () => setShow(!show), active: show })}
       {show && (
-        <Modal title="Settings" onClose={() => setShow(false)}>
+        <Modal title="Settings" onClose={() => setShow(false)} show={show}>
           <div className="flex-col">
             <div className="flex-row items-center">
               <span className="mr-0">Turn on dark mode * </span>
