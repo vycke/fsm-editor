@@ -1,3 +1,5 @@
+import { getSmoothStepPath } from 'react-flow-renderer';
+
 export default function ConnectionLine({
   sourceX,
   sourceY,
@@ -8,6 +10,14 @@ export default function ConnectionLine({
   connectionLineType,
   connectionLineStyle,
 }) {
+  const edgePath = getSmoothStepPath({
+    sourceX,
+    sourceY,
+    sourcePosition,
+    targetX,
+    targetY,
+    targetPosition,
+  });
   return (
     <g>
       <path
@@ -15,7 +25,7 @@ export default function ConnectionLine({
         stroke="#444"
         strokeWidth={1.5}
         className="animated"
-        d={`M${sourceX},${sourceY} C ${sourceX} ${targetY} ${sourceX} ${targetY} ${targetX},${targetY}`}
+        d={edgePath}
       />
       <circle
         cx={targetX}

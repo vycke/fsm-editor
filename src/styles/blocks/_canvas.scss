@@ -1,19 +1,29 @@
 .node {
-  border-color: var(--color-gray-400);
-  background-color: var(--color-gray-100);
-  line-height: 1.2;
+  position: relative;
+  background-color: var(--color-blue);
+  border: none;
+  box-shadow: var(--elevation-2);
 
   > .react-flow__handle {
-    background-color: var(--color-gray-400);
+    visibility: hidden;
+    background-color: var(--color-blue);
   }
 }
 
-.node[data-selected='true'] {
-  border-color: var(--color-blue);
+.node .node[data-selected='true'] {
+  background-color: var(--color-blue-dark);
 
   > .react-flow__handle {
-    background-color: var(--color-blue);
+    background-color: var(--color-blue-dark);
   }
+}
+
+.node:hover > .react-flow__handle {
+  visibility: visible;
+}
+
+.edge {
+  line-height: 1.8;
 }
 
 footer {

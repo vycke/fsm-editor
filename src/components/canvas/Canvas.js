@@ -1,6 +1,10 @@
 import generateId from 'helpers/generateId';
 import { useState } from 'react';
-import ReactFlow, { addEdge, updateEdge } from 'react-flow-renderer';
+import ReactFlow, {
+  addEdge,
+  updateEdge,
+  useStoreActions,
+} from 'react-flow-renderer';
 
 import ConnectionLine from './ConnectionLine';
 import StateNode from './StateNode';
@@ -8,11 +12,14 @@ import TransitionEdge from './TransitionEdge';
 
 export default function Canvas({ wrapper, elements, setElements }) {
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
+  const setSelected = useStoreActions((actions) => actions.setSelectedElements);
 
-  const onConnect = (params) =>
+  const onConnect = (params) => {
     setElements((els) =>
       addEdge({ ...params, type: 'transition', data: { label: 'event' } }, els)
     );
+    setSelected([]);
+  };
 
   const onEdgeUpdate = (oldEdge, newConnection) =>
     setElements((els) => updateEdge(oldEdge, newConnection, els));
@@ -34,6 +41,7 @@ export default function Canvas({ wrapper, elements, setElements }) {
     };
 
     setElements((es) => es.concat(newNode));
+    setSelected([newNode]);
   };
 
   const onDragOver = (event) => {

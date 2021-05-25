@@ -39,13 +39,11 @@ export default function TransitionEdge({
     y = sourceY - 12;
   }
 
-  const color = selected ? '#5467ff' : '#19232a';
-
   return (
     <>
       <path
         id={id}
-        style={{ stroke: color, strokeWidth: '2' }}
+        style={{ stroke: '#19232a', strokeWidth: '2' }}
         markerEnd="url(#arrow)"
         className="react-flow__edge-path"
         d={edgePath}
@@ -53,13 +51,16 @@ export default function TransitionEdge({
       <foreignObject x={x} y={y} style={{ overflow: 'visible' }}>
         <div className="edge | flex-col items-center">
           <span
-            className={`text-gray-100 radius-2 px-000 text-00 ${
+            className={`text-gray-100 radius-2 px-000 text-000 ${
               selected ? 'bg-blue' : 'bg-gray-400'
             }`}>
             {data.label}
           </span>
           {data.guard && (
-            <span className="text-000 bg-gray-100 px-000 radius-2">
+            <span
+              className={`${
+                selected ? 'text-blue' : 'text-gray-400'
+              } text-000 bg-gray-100 px-000 radius-2`}>
               [{data.guard}]
             </span>
           )}
@@ -70,14 +71,14 @@ export default function TransitionEdge({
           id="arrow"
           markerWidth="25"
           markerHeight="25"
-          viewBox="-20 -20 30 40"
+          viewBox="-20 -20 40 40"
           orient="auto">
           <polyline
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="1"
-            fill={color}
-            points="-10,-8 2,0 -10,8 -10,-8"
+            fill="#19232a"
+            points="-10,-8 1,0 -10,8 -10,-8"
           />
         </marker>
       </defs>

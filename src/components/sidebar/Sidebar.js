@@ -1,14 +1,16 @@
 import { removeElements, useStoreState } from 'react-flow-renderer';
 import useFsm from 'hooks/useFsm';
-import { useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { FiTrash2 } from 'react-icons/fi';
+import { AppContext } from 'App';
 
 const states = {
   opened: { on: { CHANGE: 'closed' } },
   closed: { on: { CHANGE: 'opened' } },
 };
 
-export default function Sidebar({ onRemoveElement, setElements }) {
+export default function Sidebar({ setElements }) {
+  const { updateElement } = useContext(AppContext);
   // State management
   const state = useFsm('closed', states);
   const inputRef = useRef();
@@ -41,47 +43,32 @@ export default function Sidebar({ onRemoveElement, setElements }) {
   // Conditionals
   const isEdge = selected?.source ? true : false;
 
-  // update function
-  function handleUpdate(field) {
-    return function (value) {
-      setElements((es) =>
-        es.map((e) => {
-          if (e.id !== selected?.id) return e;
-          e.data[field] = value.target.value;
-
-          return e;
-        })
-      );
-    };
-  }
-
   return (
     <aside
       className="sidebar | flex-col items-start py-1 px-0 bg-gray-500 text-gray-100"
       data-state={state.current}>
       <h2 className="text-1 mb-0">Element settings</h2>
-      <label className="text-00 text-gray-200 italic mb-000" htmlFor="name">
+      <label className="text-00 text-gray-200 mb-000" htmlFor="name">
         Element name
       </label>
       <input
         ref={inputRef}
         id="name"
+        placeholder="Element name"
         onFocus={(e) => e.target.select()}
         value={selected?.data?.label ?? ''}
-        onChange={handleUpdate('label')}
+        onChange={updateElement('label', selected?.id)}
         className="px-00 py-000 radius-1 border-gray-400 focus:border-blue border-w-2 no-outline full-width"
       />
 
       {!isEdge && edges?.length > 0 && (
         <>
-          <label
-            className="text-00 text-gray-200 italic mt-2 mb-000"
-            htmlFor="entry">
-            Select transition that should fire on entry of the state
+          <label className="text-00 text-gray-200 mt-0 mb-000" htmlFor="entry">
+            State entry action
           </label>
           {/* eslint-disable-next-line jsx-a11y/no-onchange */}
           <select
-            onChange={handleUpdate('entry')}
+            onChange={updateElement('entry', selected?.id)}
             id="enty"
             value={selected?.data?.entry ?? 'default'}
             className="px-00 py-00 radius-1 border-gray-400 focus:border-blue border-w-2 no-outline full-width">
@@ -99,15 +86,14 @@ export default function Sidebar({ onRemoveElement, setElements }) {
 
       {!isEdge && selected?.data?.entry && (
         <>
-          <label
-            className="mt-2 text-00 text-gray-200 italic mb-000"
-            htmlFor="delay">
-            Set delay for auto-transition on entry of state
+          <label className="mt-0 text-00 text-gray-200 mb-000" htmlFor="delay">
+            State entry delay
           </label>
           <input
             id="delay"
-            value={selected?.data?.delay ?? '0'}
-            onChange={handleUpdate('delay')}
+            placeholder="e.g. 3000"
+            value={selected?.data?.delay ?? ''}
+            onChange={updateElement('delay', selected?.id)}
             className="px-00 py-000 radius-1 border-gray-400 focus:border-blue border-w-2 no-outline full-width"
           />
         </>
@@ -115,16 +101,14 @@ export default function Sidebar({ onRemoveElement, setElements }) {
 
       {isEdge && (
         <>
-          <label
-            className="mt-2 text-00 text-gray-200 italic mb-000"
-            htmlFor="guard">
-            Set guard condition for this transition based on the{' '}
-            <code>ctx</code> object (e.g. <code>ctx.isAllowed</code>)
+          <label className="mt-0 text-00 text-gray-200 mb-000" htmlFor="guard">
+            Transition guard (based on <code>ctx</code>)
           </label>
           <input
             id="guard"
+            placeholder="e.g. ctx.isAllowed"
             value={selected?.data?.guard ?? ''}
-            onChange={handleUpdate('guard')}
+            onChange={updateElement('guard', selected?.id)}
             className="px-00 py-000 radius-1 border-gray-400 focus:border-blue border-w-2 no-outline full-width"
           />
         </>
