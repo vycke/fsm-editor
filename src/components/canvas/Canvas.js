@@ -15,13 +15,30 @@ export default function Canvas({ wrapper, elements, setElements }) {
   const setSelected = useStoreActions((actions) => actions.setSelectedElements);
 
   const onConnect = (params) => {
-    const element = setElements((els) =>
-      addEdge({ ...params, type: 'transition', data: { label: 'event' } }, els)
-    );
+    // select on add
+    const element = setElements((els) => {
+      const newEls = addEdge(
+        { ...params, type: 'transition', data: { label: 'event' } },
+        els
+      );
+
+      setSelected([newEls[newEls.length - 1]]);
+      return newEls;
+    });
   };
 
-  const onEdgeUpdate = (oldEdge, newConnection) =>
-    setElements((els) => updateEdge(oldEdge, newConnection, els));
+  const onEdgeUpdate = (oldEdge, newConnection) => {
+    const newEls = setElements((els) => {
+      // Select on update
+      const newEls = updateEdge(oldEdge, newConnection, els);
+      const el = newEls.find(
+        (e) =>
+          e.source === newConnection.source && e.target === newConnection.target
+      );
+      setSelected([el]);
+      return newEls;
+    });
+  };
 
   const onDrop = (event) => {
     event.preventDefault();
