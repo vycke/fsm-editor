@@ -16,6 +16,7 @@
 
 .modal-dialog {
   position: relative;
+  background-color: var(--secondary-background-color);
   margin-top: var(--spacing-3);
   width: var(--size-3);
   max-height: 100%;

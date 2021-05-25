@@ -32,7 +32,7 @@ export default function ConnectionLine({
         cy={targetY}
         fill="#fff"
         r={3}
-        stroke="#444"
+        stroke="var(--transition-color)"
         strokeWidth={1.5}
       />
     </g>

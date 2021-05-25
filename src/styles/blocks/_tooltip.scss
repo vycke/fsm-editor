@@ -10,7 +10,7 @@
 
   border-radius: var(--radius-0);
   padding: var(--spacing-000);
-  background-color: var(--color-gray-500);
+  background-color: var(--secondary-background-color);
   color: var(--color-gray-100);
 
   bottom: 115%;
@@ -30,5 +30,6 @@
   transform: translate(-50%, 0);
   border-width: 5px;
   border-style: solid;
-  border-color: var(--color-gray-500) transparent transparent transparent;
+  border-color: var(--secondary-background-color) transparent transparent
+    transparent;
 }

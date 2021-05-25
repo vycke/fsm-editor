@@ -13,3 +13,17 @@ $colors: (
 :root {
   --transition: all 200ms ease-in-out;
 }
+
+[data-theme='dark'] {
+  --background-color: var(--color-gray-500);
+  --text-color: var(--color-gray-100);
+  --secondary-background-color: var(--color-gray-400);
+  --transition-color: var(--color-gray-300);
+}
+
+[data-theme='light'] {
+  --background-color: var(--color-gray-100);
+  --text-color: var(--color-gray-500);
+  --secondary-background-color: var(--color-gray-500);
+  --transition-color: var(--color-gray-400);
+}

@@ -51,7 +51,7 @@ export default function Canvas({ wrapper, elements, setElements }) {
 
   return (
     <ReactFlow
-      className="bg-gray-100"
+      className="canvas"
       id="my-canvas"
       elements={elements}
       onConnect={onConnect}

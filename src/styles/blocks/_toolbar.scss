@@ -10,7 +10,7 @@ main {
   z-index: 100;
 
   > *[data-active='true'] {
-    background-color: var(--color-gray-400);
+    background-color: var(--secondary-background-color);
   }
 
   > * + * {

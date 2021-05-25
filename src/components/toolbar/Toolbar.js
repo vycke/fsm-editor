@@ -4,12 +4,14 @@ import {
   FiPlusCircle,
   FiImage,
   FiMaximize,
+  FiSettings,
 } from 'react-icons/fi';
 import { BiCodeCurly } from 'react-icons/bi';
 import ClipboardModal from './ClipboardModal';
 import HelpModal from './HelpModal';
 import { useZoomPanHelper } from 'react-flow-renderer';
 import ToolbarItem from './ToolbarItem';
+import SettingsModal from './SettingsModal';
 
 export default function Toolbar() {
   const downloadImage = useCreateImage('my-canvas');
@@ -41,7 +43,11 @@ export default function Toolbar() {
           <BiCodeCurly />
         </ToolbarItem>
       </ClipboardModal>
-
+      <SettingsModal>
+        <ToolbarItem data-tooltip="Editor settings">
+          <FiSettings />
+        </ToolbarItem>
+      </SettingsModal>
       <HelpModal>
         <ToolbarItem data-tooltip="You can use the 'backspace' key to delete a selected element">
           <FiHelpCircle />

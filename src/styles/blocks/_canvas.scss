@@ -1,3 +1,7 @@
+.canvas {
+  background-color: var(--background-color);
+}
+
 .node {
   position: relative;
   background-color: var(--color-blue);
@@ -10,7 +14,7 @@
   }
 }
 
-.node .node[data-selected='true'] {
+.node[data-selected='true'] {
   background-color: var(--color-blue-dark);
 
   > .react-flow__handle {
@@ -24,6 +28,25 @@
 
 .edge {
   line-height: 1.8;
+
+  > .label {
+    background-color: var(--transition-color);
+  }
+
+  > .guard {
+    color: var(--transition-color);
+    background-color: var(--background-color);
+  }
+}
+
+.edge[data-selected='true'] {
+  > .label {
+    background-color: var(--color-blue);
+  }
+
+  > .guard {
+    color: var(--color-blue);
+  }
 }
 
 footer {
@@ -31,6 +54,7 @@ footer {
   bottom: 1rem;
   left: 1rem;
   z-index: 100;
+  color: var(--text-color);
 }
 
 .github-corner {
@@ -45,7 +69,7 @@ footer {
   }
 
   .octo {
-    fill: var(--color-gray-100);
+    fill: var(--background-color);
   }
 }
 
@@ -53,6 +77,7 @@ a,
 a:link,
 a:visited,
 a:active {
+  color: var(--text-color);
   text-decoration-color: var(--color-blue);
   text-decoration-thickness: 1px;
   transition: var(--transition);
