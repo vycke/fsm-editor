@@ -15,14 +15,9 @@ export default function Canvas({ wrapper, elements, setElements }) {
   const setSelected = useStoreActions((actions) => actions.setSelectedElements);
 
   const onConnect = (params) => {
-    const element = setElements((els) => {
-      const elements = addEdge(
-        { ...params, type: 'transition', data: { label: 'event' } },
-        els
-      );
-      setSelected([elements[elements.length - 1]]);
-      return elements;
-    });
+    const element = setElements((els) =>
+      addEdge({ ...params, type: 'transition', data: { label: 'event' } }, els)
+    );
   };
 
   const onEdgeUpdate = (oldEdge, newConnection) =>
