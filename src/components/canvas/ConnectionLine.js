@@ -22,7 +22,7 @@ export default function ConnectionLine({
     <g>
       <path
         fill="none"
-        stroke="#444"
+        stroke="var(--transition-color)"
         strokeWidth={1.5}
         className="animated"
         d={edgePath}
