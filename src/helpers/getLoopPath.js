@@ -10,7 +10,7 @@ const tr = (x, y, size = 5) => `L ${x - size},${y}Q ${x},${y} ${x},${y + size}`;
 const bl = (x, y, size = 5) => `L ${x + size},${y}Q ${x},${y} ${x},${y - size}`;
 const br = (x, y, size = 5) => `L ${x - size},${y}Q ${x},${y} ${x},${y - size}`;
 
-function getCorner(s, t, offset = 25) {
+export function getCorner(s, t, offset = 45) {
   let x, y;
   if (topBottom.includes(s.pos)) y = s.y <= t.y ? s.y - offset : s.y + offset;
   else y = s.y <= t.y ? t.y + offset : t.y - offset;
@@ -21,9 +21,9 @@ function getCorner(s, t, offset = 25) {
   return [x, y];
 }
 
-export default function getLoopPath(s, t, offset = 25) {
+export default function getLoopPath(s, t, offset = 45) {
   let p1, p2, p3;
-  const [x, y] = getCorner(s, t);
+  const [x, y] = getCorner(s, t, offset);
 
   if (s.pos === 'top') {
     p1 = t.pos === 'right' ? lt(s.x, y) : rt(s.x, y);

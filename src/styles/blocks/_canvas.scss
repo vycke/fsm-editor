@@ -7,6 +7,8 @@
   background-color: var(--color-blue);
   border: none;
   box-shadow: var(--elevation-2);
+  text-align: center;
+  max-width: 12rem;
 
   > .react-flow__handle {
     visibility: hidden;
@@ -27,14 +29,17 @@
 }
 
 .edge {
-  line-height: 1.8;
+  text-align: center;
 
   > .label {
     background-color: var(--transition-color);
+    line-height: 1.8;
+    white-space: nowrap;
   }
 
   > .guard {
     color: var(--transition-color);
+    line-height: 1.2;
     background-color: var(--background-color);
   }
 }
