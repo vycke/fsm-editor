@@ -1,12 +1,18 @@
 import { getSmoothStepPath } from 'react-flow-renderer';
 
+const opposites = {
+  left: 'top',
+  right: 'left',
+  bottom: 'top',
+  top: 'bottom',
+};
+
 export default function ConnectionLine({
   sourceX,
   sourceY,
   sourcePosition,
   targetX,
   targetY,
-  targetPosition,
   connectionLineType,
   connectionLineStyle,
 }) {
@@ -16,8 +22,9 @@ export default function ConnectionLine({
     sourcePosition,
     targetX,
     targetY,
-    targetPosition,
+    targetPosition: opposites[sourcePosition],
   });
+
   return (
     <g>
       <path

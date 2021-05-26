@@ -45,7 +45,7 @@ export default function App({ children }) {
                 elements={elements}
                 setElements={setElements}
               />
-              <Toolbar />
+              <Toolbar setElements={setElements} />
             </main>
             <Sidebar setElements={setElements} />
             <footer>

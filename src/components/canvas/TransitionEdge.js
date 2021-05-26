@@ -1,3 +1,5 @@
+import getLoopPath from 'helpers/getLoopPath';
+import getLabelPosition from 'helpers/labelPosition';
 import { getSmoothStepPath } from 'react-flow-renderer';
 
 const hPair = ['left', 'right'];
@@ -13,31 +15,28 @@ export default function TransitionEdge({
   targetPosition,
   data,
   selected,
+  source,
+  target,
 }) {
-  const edgePath = getSmoothStepPath({
-    sourceX,
-    sourceY,
-    sourcePosition,
-    targetX,
-    targetY,
-    targetPosition,
-  });
+  const edgePath =
+    source !== target
+      ? getSmoothStepPath({
+          sourceX,
+          sourceY,
+          sourcePosition,
+          targetX,
+          targetY,
+          targetPosition,
+        })
+      : getLoopPath(
+          { pos: sourcePosition, x: sourceX, y: sourceY },
+          { pos: targetPosition, x: targetX, y: targetY }
+        );
 
-  let x, y;
-
-  if (
-    (hPair.includes(sourcePosition) && hPair.includes(targetPosition)) ||
-    (vPair.includes(sourcePosition) && vPair.includes(targetPosition))
-  ) {
-    x = sourceX + (targetX - sourceX) / 2;
-    y = sourceY + (targetY - sourceY) / 2 - 12;
-  } else if (vPair.includes(sourcePosition)) {
-    x = sourceX;
-    y = targetY - 12;
-  } else {
-    x = targetX;
-    y = sourceY - 12;
-  }
+  const [x, y] = getLabelPosition(
+    { pos: sourcePosition, x: sourceX, y: sourceY, id: source },
+    { pos: targetPosition, x: targetX, y: targetY, id: target }
+  );
 
   const color = 'var(--transition-color)';
 

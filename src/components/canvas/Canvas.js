@@ -28,7 +28,7 @@ export default function Canvas({ wrapper, elements, setElements }) {
   };
 
   const onEdgeUpdate = (oldEdge, newConnection) => {
-    const newEls = setElements((els) => {
+    setElements((els) => {
       // Select on update
       const newEls = updateEdge(oldEdge, newConnection, els);
       const el = newEls.find(
