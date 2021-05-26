@@ -29,3 +29,12 @@
   flex: 1 1 auto;
   overflow-y: auto;
 }
+
+.modal-dialog {
+  a,
+  a:link,
+  a:visited,
+  a:active {
+    color: var(--gray-100);
+  }
+}
