@@ -19,7 +19,7 @@ export default function HelpModal({ children }) {
             </li>
             <li>
               Configure automated transitions by setting the 'entry' and 'delay'
-              settings on a state
+              settings on a state (dotted transitions)
             </li>
             <li>
               Add transitions by 'click-n-hold' on the handles of a state and

@@ -34,8 +34,16 @@ export default function ClipboardModal({ children }) {
             className="text-gray-100 flex-row items-center"
             onClick={handleCopy}>
             <FiClipboard />
-            <span className="italic ml-00">Copy configuration</span>{' '}
+            <div className="ml-00 flex-col align-start text-left">
+              <span className="italic">
+                Copy configuration* to your clipboard
+              </span>
+              <span className="italic text-000">
+                * Make sure you use unique state and transition names
+              </span>
+            </div>
           </button>
+
           <pre className={`${codeColor} p-000 full-width`}>
             <code>{configuration}</code>
           </pre>

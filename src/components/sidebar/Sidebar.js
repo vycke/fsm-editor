@@ -9,6 +9,8 @@ const states = {
   closed: { on: { CHANGE: 'opened' } },
 };
 
+const DEFAULT_ACTION = 'NO_ENTRY_ACTION';
+
 export default function Sidebar({ setElements }) {
   const { updateElement } = useContext(AppContext);
   // State management
@@ -24,11 +26,6 @@ export default function Sidebar({ setElements }) {
     return store.edges.filter((e) => e.source === el?.id);
   });
 
-  function handleDelete() {
-    setElements((els) => removeElements([selected], els));
-    state.send('CHANGE');
-  }
-
   // Auto show/hide sidebar
   useEffect(() => {
     if (selected && state.current === 'closed') state.send('CHANGE');
@@ -42,6 +39,31 @@ export default function Sidebar({ setElements }) {
 
   // Conditionals
   const isEdge = selected?.source ? true : false;
+
+  // handlers
+  function handleDelete() {
+    setElements((els) => removeElements([selected], els));
+    state.send('CHANGE');
+  }
+
+  function setEntryAction(v) {
+    if (v?.target?.value === DEFAULT_ACTION)
+      updateElement('entry', selected?.id)({ target: { value: null } });
+    else updateElement('entry', selected?.id)(v);
+
+    if (isEdge) return;
+
+    // Set animation on auto-transition
+    const edgeIds = edges.map((e) => e.id);
+
+    setElements((els) => {
+      return els.map((e) => {
+        if (!edgeIds.includes(e.id)) return e;
+        if (e.data.label === v.target.value) return { ...e, animated: true };
+        return { ...e, animated: false };
+      });
+    });
+  }
 
   return (
     <aside
@@ -68,13 +90,11 @@ export default function Sidebar({ setElements }) {
           </label>
           {/* eslint-disable-next-line jsx-a11y/no-onchange */}
           <select
-            onChange={updateElement('entry', selected?.id)}
-            id="enty"
+            onChange={setEntryAction}
+            id="entry"
             value={selected?.data?.entry ?? 'default'}
             className="px-00 py-00 radius-1 border-gray-400 focus:border-blue border-w-2 no-outline full-width">
-            <option value="default" disabled>
-              ---
-            </option>
+            <option value={DEFAULT_ACTION}>---</option>
             {edges?.map((e, i) => (
               <option key={i} value={e.data.label}>
                 {e.data.label}
