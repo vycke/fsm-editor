@@ -6,19 +6,17 @@ import { createContext, useEffect, useRef, useState } from 'react';
 import { ReactFlowProvider } from 'react-flow-renderer';
 import packageJson from '../package.json';
 import Sidebar from 'components/sidebar/Sidebar';
-import useAppStore from 'hooks/useStore';
+import useTheme from 'hooks/useTheme';
+
+const initial = JSON.parse(localStorage.getItem('elements')) || [];
 
 export const AppContext = createContext();
 
 export default function App({ children }) {
-  const theme = useAppStore('theme');
+  const theme = useTheme();
+  const [instance, setInstance] = useState(null);
   const reactFlowWrapper = useRef(null);
-  const [elements, setElements] = useState([]);
-
-  useEffect(() => {
-    if (localStorage.getItem('theme') !== theme)
-      localStorage.setItem('theme', theme);
-  }, [theme]);
+  const [elements, setElements] = useState(initial);
 
   function updateElement(field, id) {
     return function (value) {
@@ -33,9 +31,17 @@ export default function App({ children }) {
     };
   }
 
+  useEffect(() => {
+    if (!instance) return;
+    localStorage.setItem(
+      'elements',
+      JSON.stringify(instance.toObject().elements)
+    );
+  }, [elements, instance]);
+
   return (
     <div className="grail" data-theme={theme}>
-      <AppContext.Provider value={{ updateElement }}>
+      <AppContext.Provider value={{ updateElement, instance }}>
         <ToastProvider>
           <GithubCorner />
           <ReactFlowProvider>
@@ -44,6 +50,8 @@ export default function App({ children }) {
                 wrapper={reactFlowWrapper}
                 elements={elements}
                 setElements={setElements}
+                onLoad={setInstance}
+                instance={instance}
               />
               <Toolbar setElements={setElements} />
             </main>

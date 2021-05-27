@@ -23,18 +23,16 @@
   background-clip: padding-box;
   outline: 0;
   pointer-events: auto;
-}
 
-.modal-body {
-  flex: 1 1 auto;
-  overflow-y: auto;
-}
-
-.modal-dialog {
   a,
   a:link,
   a:visited,
   a:active {
     color: var(--gray-100);
   }
+}
+
+.modal-body {
+  flex: 1 1 auto;
+  overflow-y: auto;
 }

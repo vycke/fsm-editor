@@ -1,24 +1,33 @@
 import generateId from 'helpers/generateId';
-import { useState } from 'react';
 import ReactFlow, {
   addEdge,
   updateEdge,
   useStoreActions,
+  useZoomPanHelper,
 } from 'react-flow-renderer';
 
 import ConnectionLine from './ConnectionLine';
 import StateNode from './StateNode';
 import TransitionEdge from './TransitionEdge';
 
-export default function Canvas({ wrapper, elements, setElements }) {
-  const [reactFlowInstance, setReactFlowInstance] = useState(null);
+export default function Canvas({
+  wrapper,
+  elements,
+  setElements,
+  onLoad,
+  instance,
+}) {
+  const { fitView } = useZoomPanHelper();
   const setSelected = useStoreActions((actions) => actions.setSelectedElements);
 
-  const onConnect = (params) => {
+  const onConnect = (p) => {
+    // disallow connecting to the self handle
+    if (p.source === p.target && p.sourceHandle === p.targetHandle) return;
+
     // select on add
     const element = setElements((els) => {
       const newEls = addEdge(
-        { ...params, type: 'transition', data: { label: 'event' } },
+        { ...p, type: 'transition', data: { label: 'event' } },
         els
       );
 
@@ -27,13 +36,12 @@ export default function Canvas({ wrapper, elements, setElements }) {
     });
   };
 
-  const onEdgeUpdate = (oldEdge, newConnection) => {
+  const onEdgeUpdate = (old, con) => {
     setElements((els) => {
       // Select on update
-      const newEls = updateEdge(oldEdge, newConnection, els);
+      const newEls = updateEdge(old, con, els);
       const el = newEls.find(
-        (e) =>
-          e.source === newConnection.source && e.target === newConnection.target
+        (e) => e.source === con.source && e.target === con.target
       );
       setSelected([el]);
       return newEls;
@@ -45,7 +53,7 @@ export default function Canvas({ wrapper, elements, setElements }) {
 
     const reactFlowBounds = wrapper.current.getBoundingClientRect();
     const type = event.dataTransfer.getData('application/reactflow');
-    const position = reactFlowInstance.project({
+    const position = instance.project({
       x: event.clientX - reactFlowBounds.left,
       y: event.clientY - reactFlowBounds.top,
     });
@@ -65,6 +73,11 @@ export default function Canvas({ wrapper, elements, setElements }) {
     event.dataTransfer.dropEffect = 'move';
   };
 
+  function handleLoad(instance) {
+    onLoad(instance);
+    fitView();
+  }
+
   return (
     <ReactFlow
       className="canvas"
@@ -74,7 +87,7 @@ export default function Canvas({ wrapper, elements, setElements }) {
       connectionLineComponent={ConnectionLine}
       onEdgeUpdate={onEdgeUpdate}
       connectionMode="loose"
-      onLoad={setReactFlowInstance}
+      onLoad={handleLoad}
       onDrop={onDrop}
       multiSelectionKeyCode={null}
       onDragOver={onDragOver}
