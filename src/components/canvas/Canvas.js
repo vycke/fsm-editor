@@ -67,7 +67,7 @@ export default function Canvas({
 
   function handleLoad(instance) {
     onLoad(instance);
-    fitView({ padding: 1.5 });
+    fitView({ padding: 1.2 });
   }
 
   return (

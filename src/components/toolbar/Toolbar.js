@@ -40,7 +40,7 @@ export default function Toolbar({ setElements }) {
       </ToolbarItem>
       <ToolbarItem
         data-tooltip="Fit to zoom"
-        onClick={() => fitView({ padding: 1.5 })}>
+        onClick={() => fitView({ padding: 1.2 })}>
         <FiMaximize />
       </ToolbarItem>
       <ToolbarItem
