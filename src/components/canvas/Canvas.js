@@ -1,4 +1,3 @@
-import generateId from 'helpers/generateId';
 import ReactFlow, {
   addEdge,
   updateEdge,
@@ -9,6 +8,7 @@ import ReactFlow, {
 import ConnectionLine from './ConnectionLine';
 import StateNode from './StateNode';
 import TransitionEdge from './TransitionEdge';
+import gId from '../../helpers/generateId';
 
 export default function Canvas({
   wrapper,
@@ -26,10 +26,8 @@ export default function Canvas({
 
     // select on add
     const element = setElements((els) => {
-      const newEls = addEdge(
-        { ...p, type: 'transition', data: { label: 'event' } },
-        els
-      );
+      const newEl = { ...p, type: 'transition', data: { label: 'event' } };
+      const newEls = addEdge(newEl, els);
 
       setSelected([newEls[newEls.length - 1]]);
       return newEls;
@@ -57,13 +55,7 @@ export default function Canvas({
       x: event.clientX - reactFlowBounds.left,
       y: event.clientY - reactFlowBounds.top,
     });
-    const newNode = {
-      id: generateId(),
-      type,
-      position,
-      data: { label: `new ${type}` },
-    };
-
+    const newNode = { id: gId(), type, position, data: { label: `state` } };
     setElements((es) => es.concat(newNode));
     setSelected([newNode]);
   };
@@ -75,7 +67,7 @@ export default function Canvas({
 
   function handleLoad(instance) {
     onLoad(instance);
-    fitView();
+    fitView({ padding: 1.5 });
   }
 
   return (

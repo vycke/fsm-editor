@@ -3,7 +3,6 @@ function machineToConfig(nodes, edges) {
   const config = {};
   nodes.forEach((n) => {
     config[n.data.label] = {};
-    console.log(n.data.entry);
     if (n.data.entry) {
       const str = `[(send) => send('${n.data.entry}', { delay: ${
         n.data.delay || 0

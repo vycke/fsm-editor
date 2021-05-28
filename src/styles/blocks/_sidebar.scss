@@ -9,7 +9,7 @@
     -4px 0px 6px 2px rgba(0, 0, 0, 0.05);
 }
 
-.sidebar[data-state='closed'] {
+.sidebar[data-opened='false'] {
   width: 0px;
   padding: 0px;
 }

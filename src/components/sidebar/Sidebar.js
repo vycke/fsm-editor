@@ -1,20 +1,14 @@
 import { removeElements, useStoreState } from 'react-flow-renderer';
-import useFsm from 'hooks/useFsm';
 import { useContext, useEffect, useRef } from 'react';
 import { FiTrash2 } from 'react-icons/fi';
 import { AppContext } from 'App';
-
-const states = {
-  opened: { on: { CHANGE: 'closed' } },
-  closed: { on: { CHANGE: 'opened' } },
-};
+import useAutoOpen from 'hooks/useAutoOpen';
 
 const DEFAULT_ACTION = 'NO_ENTRY_ACTION';
 
 export default function Sidebar({ setElements }) {
   const { updateElement } = useContext(AppContext);
   // State management
-  const state = useFsm('closed', states);
   const inputRef = useRef();
   const selected = useStoreState((store) => {
     const el = store.selectedElements?.[0];
@@ -25,12 +19,7 @@ export default function Sidebar({ setElements }) {
     const el = store.selectedElements?.[0];
     return store.edges.filter((e) => e.source === el?.id);
   });
-
-  // Auto show/hide sidebar
-  useEffect(() => {
-    if (selected && state.current === 'closed') state.send('CHANGE');
-    if (!selected && state.current === 'opened') state.send('CHANGE');
-  }, [selected, state]);
+  const [state, close] = useAutoOpen(selected);
 
   // auto focus
   useEffect(() => {
@@ -43,7 +32,7 @@ export default function Sidebar({ setElements }) {
   // handlers
   function handleDelete() {
     setElements((els) => removeElements([selected], els));
-    state.send('CHANGE');
+    close();
   }
 
   function setEntryAction(v) {
@@ -68,7 +57,7 @@ export default function Sidebar({ setElements }) {
   return (
     <aside
       className="sidebar | flex-col items-start py-1 px-0 bg-gray-500 text-gray-100"
-      data-state={state.current}>
+      data-opened={state}>
       <h2 className="text-1 mb-0">Element settings</h2>
       <label className="text-00 text-gray-200 mb-000" htmlFor="name">
         Element name

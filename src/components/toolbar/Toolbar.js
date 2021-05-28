@@ -38,7 +38,9 @@ export default function Toolbar({ setElements }) {
         draggable>
         <FiPlusCircle />
       </ToolbarItem>
-      <ToolbarItem data-tooltip="Fit to zoom" onClick={fitView}>
+      <ToolbarItem
+        data-tooltip="Fit to zoom"
+        onClick={() => fitView({ padding: 1.5 })}>
         <FiMaximize />
       </ToolbarItem>
       <ToolbarItem
