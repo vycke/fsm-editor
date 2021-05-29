@@ -25,9 +25,7 @@
   border: 1px solid var(--color-blue);
   background-color: var(--background-color);
   box-sizing: padding-box;
-  -webkit-transition: all 100ms ease-in-out;
-  -moz-transition: all 100ms ease-in-out;
-  transition: all 100ms ease-in-out;
+  transition: var(--transition);
 }
 
 .slider:before {
@@ -39,9 +37,7 @@
   left: -0.5px;
   border-radius: 50%;
   background-color: var(--color-blue);
-  -webkit-transition: all 100ms ease-in-out;
-  -moz-transition: all 100ms ease-in-out;
-  transition: all 100ms ease-in-out;
+  transition: var(--transition);
 }
 
 input:checked + .slider:before {
