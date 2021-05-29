@@ -58,7 +58,7 @@ export default function App({ children }) {
             <Sidebar setElements={setElements} />
             <footer>
               <span>{`v${packageJson.version} by `}</span>
-              <a href="https://crinkle.dev">crinkle</a>
+              <a href="https://crinkles.io">crinkles</a>
             </footer>
           </ReactFlowProvider>
         </ToastProvider>
