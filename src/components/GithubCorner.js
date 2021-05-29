@@ -1,7 +1,7 @@
 export default function GithubCorner() {
   return (
     <a
-      href="https://github.com/kevtiq/fsm-editor"
+      href="https://github.com/crinklesio/fsm-editor"
       className="github-corner"
       aria-label="View source on GitHub">
       <svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true">

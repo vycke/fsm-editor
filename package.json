@@ -3,9 +3,9 @@
   "version": "0.5.5",
   "private": true,
   "dependencies": {
-    "@crinkle/feo": "^1.3.2",
-    "@crinkle/fsm": "^0.4.0",
-    "@crinkle/pubbel": "^2.0.0",
+    "@crinkles/feo": "^1.4.1",
+    "@crinkles/fsm": "^0.4.0",
+    "@crinkles/pubbel": "^2.0.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",

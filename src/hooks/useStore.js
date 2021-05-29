@@ -1,5 +1,5 @@
 import { useReducer, useRef, useLayoutEffect } from 'react';
-import { proxy } from '@crinkle/pubbel';
+import { proxy } from '@crinkles/pubbel';
 
 const init = localStorage.getItem('theme') || 'light';
 export const store = proxy(() => ({ theme: init }));

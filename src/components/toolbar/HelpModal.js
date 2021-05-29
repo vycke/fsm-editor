@@ -32,8 +32,8 @@ export default function HelpModal({ children }) {
             <li>Export the canvas as a .PNG</li>
             <li>
               Export the finite state machine configuration, useable for{' '}
-              <a href="https://github.com/kevtiq/fsm"> this fsm library</a>, or{' '}
-              <a href="https://github.com/davidkpiano/xstate">xstate *</a>).{' '}
+              <a href="https://github.com/crinklesio/fsm"> this fsm library</a>,
+              or <a href="https://github.com/davidkpiano/xstate">xstate *</a>).{' '}
             </li>
             <li>
               Light and dark-mode (note: dark-mode impacts the background color

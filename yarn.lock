@@ -1209,20 +1209,20 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@crinkle/feo@^1.3.2":
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/@crinkle/feo/-/feo-1.3.2.tgz#942cf4f8032b4ee5d39fda4655bc01f3896b70c5"
-  integrity sha512-LQ3a1XISBR3+G8fMg8BkiC8nZT/Ft6gapCaIQguGDwfh3dqDfbdGruK9fYD0Rlvdp548lg+Kj1nf0aRI2RM0Dg==
+"@crinkles/feo@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@crinkles/feo/-/feo-1.4.1.tgz#4d66762b4b0b7401089f525cc5dcce4efd305054"
+  integrity sha512-6zSI1u9KlHAsgILybuo36OHlQpUpuuiufKgP0t0PGTlASC2Du9SGbtqG3JxNpeuQ8W9uq8LSHnlqKL6ak+WDtg==
 
-"@crinkle/fsm@^0.4.0":
+"@crinkles/fsm@^0.4.0":
   version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@crinkle/fsm/-/fsm-0.4.0.tgz#f0f1a50275c7677d6f6e19dd0adef7c8d14ff2b8"
-  integrity sha512-jOlRphga/uVyhDCTKDeQcKhZNbYy7XyhbVR3Gmgsham3iI1zm/fUcE3V6bXGhjMtbKhqLQF0kYk/ZmNog6ziag==
+  resolved "https://registry.yarnpkg.com/@crinkles/fsm/-/fsm-0.4.0.tgz#2fc5bfc22793ca832009f7c2d82b701517bcd30a"
+  integrity sha512-pv/pG6b4JnXlP+Vs0jK5mYesUDt4640KZiJe/m7ILnu2weYiOdpRT4D0sw/EfJJHIY6Hur3tXOkfBX1N/WKXxw==
 
-"@crinkle/pubbel@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@crinkle/pubbel/-/pubbel-2.0.0.tgz#7d3eeef2fd5ee53de38d9c00c0661d555e62d974"
-  integrity sha512-+clUoeXVTjVRW3qkMgCwZV76W2O4sOPIPmxGDTnfWwJW8lY9sQ0FVlIWOQXajqEd4lQi6SyBY2aNaNtPm+uTYA==
+"@crinkles/pubbel@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@crinkles/pubbel/-/pubbel-2.0.1.tgz#8b989e1dc94866467c7db509a8100008b39817ac"
+  integrity sha512-HOM6Sq0EopjQ2eKv04rrtIlu2ByELKZqnWQLPbExiukbZ7HVnUV3IpjmgHT64P0kvAODjw38stdRxQ52CT3pLw==
 
 "@csstools/convert-colors@^1.4.0":
   version "1.4.0"

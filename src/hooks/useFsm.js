@@ -1,4 +1,4 @@
-import { fsm } from '@crinkle/fsm';
+import { fsm } from '@crinkles/fsm';
 import { useLayoutEffect, useReducer, useRef } from 'react';
 
 // Define the hook, with query for computed parameters
