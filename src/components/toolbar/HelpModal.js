@@ -36,6 +36,12 @@ export default function HelpModal({ children }) {
               or <a href="https://github.com/davidkpiano/xstate">xstate *</a>).{' '}
             </li>
             <li>
+              Import said configuration and the editor will create a rough graph
+              for you, based on the{' '}
+              <a href="https://github.com/crinklesio/digl">DIGL algorithm</a>.
+            </li>
+
+            <li>
               Light and dark-mode (note: dark-mode impacts the background color
               of the .PNG export)
             </li>

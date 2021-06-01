@@ -3,12 +3,14 @@ import {
   FiHelpCircle,
   FiPlusCircle,
   FiImage,
+  FiUpload,
   FiMaximize,
   FiSettings,
 } from 'react-icons/fi';
 import { BiCodeCurly } from 'react-icons/bi';
 import { AiOutlineClear } from 'react-icons/ai';
-import ClipboardModal from './ClipboardModal';
+import CopyModal from './CopyModal';
+import PasteModal from './PasteModal';
 import HelpModal from './HelpModal';
 import { useZoomPanHelper } from 'react-flow-renderer';
 import ToolbarItem from './ToolbarItem';
@@ -38,9 +40,7 @@ export default function Toolbar({ setElements }) {
         draggable>
         <FiPlusCircle />
       </ToolbarItem>
-      <ToolbarItem
-        data-tooltip="Fit to zoom"
-        onClick={() => fitView({ padding: 1.2 })}>
+      <ToolbarItem data-tooltip="Fit to zoom" onClick={() => fitView()}>
         <FiMaximize />
       </ToolbarItem>
       <ToolbarItem
@@ -53,11 +53,16 @@ export default function Toolbar({ setElements }) {
         onClick={downloadImage}>
         <FiImage />
       </ToolbarItem>
-      <ClipboardModal>
+      <CopyModal>
         <ToolbarItem data-tooltip="View and copy the FSM configuration as JSON to your clipboard">
           <BiCodeCurly />
         </ToolbarItem>
-      </ClipboardModal>
+      </CopyModal>
+      <PasteModal>
+        <ToolbarItem data-tooltip="Paste a FSM configuration and it will magically appear on the screen">
+          <FiUpload />
+        </ToolbarItem>
+      </PasteModal>
       <SettingsModal>
         <ToolbarItem data-tooltip="Editor settings">
           <FiSettings />

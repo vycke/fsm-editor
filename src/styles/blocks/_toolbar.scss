@@ -27,3 +27,7 @@ main {
     border-bottom-right-radius: var(--radius-2);
   }
 }
+
+code:focus {
+  outline: none;
+}

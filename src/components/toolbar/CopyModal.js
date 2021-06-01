@@ -3,7 +3,7 @@ import Modal from '../Modal';
 import { FiClipboard } from 'react-icons/fi';
 import { useStoreState } from 'react-flow-renderer';
 import useToastManager from '../Toast';
-import { stringifyMachine } from 'helpers/conversion';
+import { stringifyMachine } from 'helpers/machineToConfig';
 import useAppStore from 'hooks/useStore';
 
 export default function ClipboardModal({ children }) {

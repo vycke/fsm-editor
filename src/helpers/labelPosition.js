@@ -3,7 +3,7 @@ import { getCorner } from './getLoopPath';
 const leftRight = ['left', 'right'];
 const topBottom = ['bottom', 'top'];
 
-export default function getLabelPosition(source, target, offset = 12) {
+export default function getLabelPosition(source, target, offset = 14.5) {
   let x, y;
 
   if (source.id === target.id) {

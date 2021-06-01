@@ -41,7 +41,7 @@ export default function App({ children }) {
 
   return (
     <div className="grail" data-theme={theme}>
-      <AppContext.Provider value={{ updateElement, instance }}>
+      <AppContext.Provider value={{ updateElement, instance, setElements }}>
         <ToastProvider>
           <GithubCorner />
           <ReactFlowProvider>

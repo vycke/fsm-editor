@@ -1,3 +1,4 @@
+// machine to a config object that has replaceable parts
 function machineToConfig(nodes, edges) {
   // Initial convertion
   const config = {};
@@ -8,7 +9,6 @@ function machineToConfig(nodes, edges) {
         n.data.delay || 0
       } })]`.replace(', { delay: 0 }', '');
       config[n.data.label].entry = str;
-      console.log(config);
     }
   });
 
@@ -21,7 +21,7 @@ function machineToConfig(nodes, edges) {
     if (e.data.guard) {
       config[source.label].on[e.data.label] = {
         target: target.label,
-        cond: `[(ctx) => ${e.data.guard}]`,
+        cond: `[${e.data.guard}]`,
       };
     } else {
       config[source.label].on[e.data.label] = target.label;
@@ -31,6 +31,7 @@ function machineToConfig(nodes, edges) {
   return config;
 }
 
+// prepare for copy to clipboard
 export function stringifyMachine(nodes, edges) {
   return JSON.stringify(machineToConfig(nodes, edges), null, 2)
     .replaceAll('"[', '')

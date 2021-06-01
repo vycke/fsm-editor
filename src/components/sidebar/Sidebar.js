@@ -111,11 +111,11 @@ export default function Sidebar({ setElements }) {
       {isEdge && (
         <>
           <label className="mt-0 text-00 text-gray-200 mb-000" htmlFor="guard">
-            Transition guard (based on <code>ctx</code>)
+            Transition guard function (e.g. <code>(ctx) => ctx.isAllowed</code>)
           </label>
           <input
             id="guard"
-            placeholder="e.g. ctx.isAllowed"
+            placeholder="e.g.(ctx) => ctx.isAllowed"
             value={selected?.data?.guard ?? ''}
             onChange={updateElement('guard', selected?.id)}
             className="px-00 py-000 radius-1 border-gray-400 focus:border-blue border-w-2 no-outline full-width"

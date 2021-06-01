@@ -51,7 +51,7 @@ export default function TransitionEdge({
       />
       <foreignObject x={x} y={y} style={{ overflow: 'visible' }}>
         <div className="edge | flex-col items-center" data-selected={selected}>
-          <span className="label | text-gray-100 radius-2 px-000 text-000">
+          <span className="label | text-gray-100 radius-2 px-000 text-00">
             {data.label}
           </span>
           {data.guard && (
