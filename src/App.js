@@ -57,8 +57,8 @@ export default function App({ children }) {
             </main>
             <Sidebar />
             <footer className="text-theme-front">
-              <span>{`v${packageJson.version} by `}</span>
-              <a href="https://crinkles.io">crinkles</a>
+              <a href="https://github.com/crinklesio/fsm-editor">{`v${packageJson.version}`}</a>{' '}
+              by <a href="https://crinkles.io">crinkles</a>
             </footer>
           </ReactFlowProvider>
         </ToastProvider>

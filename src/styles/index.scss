@@ -45,6 +45,10 @@ main {
 
 header {
   z-index: 100;
+
+  > .logo {
+    margin-right: auto;
+  }
 }
 
 code:focus {
