@@ -1,0 +1,21 @@
+.controls {
+  position: absolute;
+  top: 50%;
+  left: var(--spacing-1);
+  transform: translateY(-50%);
+  z-index: 100;
+
+  > * + * {
+    border-top: 1px solid var(--color-blue-dark);
+  }
+
+  & > *:first-child {
+    border-top-left-radius: var(--radius-1);
+    border-top-right-radius: var(--radius-1);
+  }
+
+  & > *:last-child {
+    border-bottom-left-radius: var(--radius-1);
+    border-bottom-right-radius: var(--radius-1);
+  }
+}

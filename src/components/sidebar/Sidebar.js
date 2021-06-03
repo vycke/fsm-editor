@@ -1,4 +1,8 @@
-import { removeElements, useStoreState } from 'react-flow-renderer';
+import {
+  removeElements,
+  useStoreActions,
+  useStoreState,
+} from 'react-flow-renderer';
 import { useContext, useEffect, useRef } from 'react';
 import { FiTrash2 } from 'react-icons/fi';
 import { AppContext } from 'App';
@@ -6,8 +10,9 @@ import useAutoOpen from 'hooks/useAutoOpen';
 
 const DEFAULT_ACTION = 'NO_ENTRY_ACTION';
 
-export default function Sidebar({ setElements }) {
-  const { updateElement } = useContext(AppContext);
+export default function Sidebar() {
+  const { updateElement, setElements } = useContext(AppContext);
+  const setSelected = useStoreActions((actions) => actions.setSelectedElements);
   // State management
   const inputRef = useRef();
   const selected = useStoreState((store) => {
@@ -32,6 +37,7 @@ export default function Sidebar({ setElements }) {
   // handlers
   function handleDelete() {
     setElements((els) => removeElements([selected], els));
+    setSelected([]);
     close();
   }
 
@@ -56,10 +62,10 @@ export default function Sidebar({ setElements }) {
 
   return (
     <aside
-      className="sidebar | flex-col items-start py-1 px-0 bg-gray-500 text-gray-100"
+      className="sidebar | bg-theme-back-secondary flex-col items-start py-1 px-0 text-theme-front shadow"
       data-opened={state}>
       <h2 className="text-1 mb-0">Element settings</h2>
-      <label className="text-00 text-gray-200 mb-000" htmlFor="name">
+      <label className="text-00 text-theme-front mb-000" htmlFor="name">
         Element name
       </label>
       <input
@@ -74,7 +80,9 @@ export default function Sidebar({ setElements }) {
 
       {!isEdge && edges?.length > 0 && (
         <>
-          <label className="text-00 text-gray-200 mt-0 mb-000" htmlFor="entry">
+          <label
+            className="text-00 text-theme-front mt-0 mb-000"
+            htmlFor="entry">
             State entry action
           </label>
           {/* eslint-disable-next-line jsx-a11y/no-onchange */}
@@ -95,7 +103,9 @@ export default function Sidebar({ setElements }) {
 
       {!isEdge && selected?.data?.entry && (
         <>
-          <label className="mt-0 text-00 text-gray-200 mb-000" htmlFor="delay">
+          <label
+            className="mt-0 text-00 text-theme-front mb-000"
+            htmlFor="delay">
             State entry delay
           </label>
           <input
@@ -110,7 +120,9 @@ export default function Sidebar({ setElements }) {
 
       {isEdge && (
         <>
-          <label className="mt-0 text-00 text-gray-200 mb-000" htmlFor="guard">
+          <label
+            className="mt-0 text-00 text-theme-front mb-000"
+            htmlFor="guard">
             Transition guard function (e.g. <code>(ctx) => ctx.isAllowed</code>)
           </label>
           <input

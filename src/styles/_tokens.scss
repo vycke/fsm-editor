@@ -2,7 +2,7 @@ $colors: (
   'gray-100': #fafafa,
   'gray-200': #e5eaed,
   'gray-300': #a7b1bc,
-  'gray-400': #19232a,
+  'gray-400': #29333a,
   'gray-500': #0e141e,
   'blue': #5467ff,
   'blue-dark': #2e43eb,
@@ -10,20 +10,25 @@ $colors: (
   'red-dark': #d00046,
 );
 
+$light-theme: (
+  'front': 'gray-500',
+  'back': 'gray-100',
+  'back-secondary': 'gray-200',
+  'transition': 'gray-400',
+);
+
+$dark-theme: (
+  'front': 'gray-100',
+  'back': 'gray-500',
+  'back-secondary': 'gray-400',
+  'transition': 'gray-300',
+);
+
+$themes: (
+  'dark': $dark-theme,
+  'light': $light-theme,
+);
+
 :root {
   --transition: all 200ms ease-in-out;
-}
-
-[data-theme='dark'] {
-  --background-color: var(--color-gray-500);
-  --text-color: var(--color-gray-100);
-  --secondary-background-color: var(--color-gray-400);
-  --transition-color: var(--color-gray-300);
-}
-
-[data-theme='light'] {
-  --background-color: var(--color-gray-100);
-  --text-color: var(--color-gray-500);
-  --secondary-background-color: var(--color-gray-500);
-  --transition-color: var(--color-gray-400);
 }

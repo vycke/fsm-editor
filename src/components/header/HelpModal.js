@@ -1,12 +1,17 @@
-import { cloneElement, useState } from 'react';
+import { useState } from 'react';
 import Modal from '../Modal';
+import { FiHelpCircle } from 'react-icons/fi';
 
-export default function HelpModal({ children }) {
+export default function HelpModal() {
   const [show, setShow] = useState(false);
 
   return (
     <>
-      {cloneElement(children, { onClick: () => setShow(!show), active: show })}
+      <button
+        className="text-0 hover:bg-gray-300 px-0 py-00 text-theme-front"
+        onClick={() => setShow(true)}>
+        <FiHelpCircle />
+      </button>
       {show && (
         <Modal title="Help" onClose={() => setShow(false)} show={show}>
           <p>

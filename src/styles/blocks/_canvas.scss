@@ -1,14 +1,11 @@
-.canvas {
-  background-color: var(--background-color);
-}
-
 .node {
   position: relative;
   background-color: var(--color-blue);
   border: none;
   box-shadow: var(--elevation-2);
   text-align: center;
-  max-width: 200px;
+  width: 150px;
+  word-wrap: break-word;
 
   > .react-flow__handle {
     visibility: hidden;
@@ -32,15 +29,12 @@
   text-align: center;
 
   > .label {
-    background-color: var(--transition-color);
     line-height: 1.8;
     white-space: nowrap;
   }
 
   > .guard {
-    color: var(--transition-color);
     line-height: 1.2;
-    background-color: var(--background-color);
   }
 }
 
@@ -52,14 +46,6 @@
   > .guard {
     color: var(--color-blue);
   }
-}
-
-footer {
-  position: absolute;
-  bottom: var(--spacing-2);
-  left: 1rem;
-  z-index: 100;
-  color: var(--text-color);
 }
 
 .github-corner {
@@ -74,20 +60,6 @@ footer {
   }
 
   .octo {
-    fill: var(--background-color);
+    fill: var(--theme-back-secondary);
   }
-}
-
-a,
-a:link,
-a:visited,
-a:active {
-  color: var(--text-color);
-  text-decoration-color: var(--color-blue);
-  text-decoration-thickness: 1px;
-  transition: var(--transition);
-}
-
-a:hover {
-  color: var(--color-blue);
 }

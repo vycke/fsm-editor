@@ -1,12 +1,9 @@
 .sidebar {
   overflow-y: auto;
   z-index: 100;
-  background-color: var(--secondary-background-color);
   width: var(--size-1);
   transition: var(--transition);
   overflow-y: auto;
-  box-shadow: -10px 0px 15px 4px rgba(0, 0, 0, 0.1),
-    -4px 0px 6px 2px rgba(0, 0, 0, 0.05);
 }
 
 .sidebar[data-opened='false'] {

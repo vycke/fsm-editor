@@ -14,7 +14,7 @@ export default function useCreateImage(id) {
       add('Preparing for download...');
       const dataUrl = await toPng(node);
       download(dataUrl, 'my-finite-state-machine.png');
-      add('Download completed');
+      add('Image created! Select your location to store it.');
     } catch (e) {
       add('Something went wrong');
     }

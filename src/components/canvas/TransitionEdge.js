@@ -38,7 +38,7 @@ export default function TransitionEdge({
     { pos: targetPosition, x: targetX, y: targetY, id: target }
   );
 
-  const color = 'var(--transition-color)';
+  const color = 'var(--theme-transition)';
 
   return (
     <>
@@ -51,11 +51,11 @@ export default function TransitionEdge({
       />
       <foreignObject x={x} y={y} style={{ overflow: 'visible' }}>
         <div className="edge | flex-col items-center" data-selected={selected}>
-          <span className="label | text-gray-100 radius-2 px-000 text-00">
+          <span className="label | bg-theme-transition text-gray-100 radius-2 px-000 text-00">
             {data.label}
           </span>
           {data.guard && (
-            <span className="guard | text-000 px-000 radius-2">
+            <span className="guard | bg-theme-back text-theme-front text-000 px-000 radius-2">
               [{data.guard}]
             </span>
           )}

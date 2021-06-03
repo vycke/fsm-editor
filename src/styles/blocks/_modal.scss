@@ -16,20 +16,12 @@
 
 .modal-dialog {
   position: relative;
-  background-color: var(--secondary-background-color);
-  margin-top: var(--spacing-3);
+  margin-top: calc(var(--spacing-3) + 1rem);
   width: var(--size-3);
   max-height: 100%;
   background-clip: padding-box;
   outline: 0;
   pointer-events: auto;
-
-  a,
-  a:link,
-  a:visited,
-  a:active {
-    color: var(--gray-100);
-  }
 }
 
 .modal-body {

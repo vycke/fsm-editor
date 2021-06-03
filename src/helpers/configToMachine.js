@@ -1,4 +1,4 @@
-import { layout } from '@crinkles/digl';
+import autoLayout from './autoLayout';
 
 const layoutConfig = { width: 100, height: 60, orientation: 'horizontal' };
 
@@ -47,7 +47,7 @@ export function getTransitions(config) {
   return edges;
 }
 
-export function configToMachine(start, horizontal, config) {
+export function configToMachine(start, orientation, config) {
   const string = config
     .replaceAll(/"cond": (.*?),*\n/gm, '"cond": "$1"\n')
     .replaceAll(/"entry": (.*?),*\n/gm, '"entry": "$1",\n')
@@ -58,19 +58,15 @@ export function configToMachine(start, horizontal, config) {
 
     const nodes = getStates(newConfig);
     const edges = getTransitions(newConfig);
-    const positions = layout({
-      ...layoutConfig,
-      orientation: horizontal ? 'horizontal' : 'vertical',
-    })(
+
+    const positionedNodes = autoLayout(
       start,
       nodes.map(({ id }) => ({ id })),
-      edges.map(({ source, target }) => ({ source, target }))
+      edges.map(({ source, target }) => ({ source, target })),
+      orientation
     );
 
-    const positionedNodes = nodes.map((n) => {
-      const pos = positions.find((r) => r.id === n.id);
-      return { ...n, position: { x: pos.x, y: pos.y } };
-    });
+    const horizontal = orientation === 'horizontal';
 
     const positionedEdges = edges.map((e) => {
       const newEdge = { ...e };

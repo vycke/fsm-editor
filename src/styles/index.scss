@@ -17,10 +17,10 @@ body {
 @import './blocks/sidebar';
 @import './blocks/canvas';
 @import './blocks/toasts';
-@import './blocks/toolbar';
 @import './blocks/tooltip';
 @import './blocks/modal';
 @import './blocks/switch';
+@import './blocks/controls';
 
 .no-outline:focus {
   outline: none;
@@ -38,6 +38,36 @@ body {
   box-shadow: var(--elevation-2);
 }
 
-pre > code {
-  line-height: 1.2;
+main {
+  position: relative;
+  overflow-y: hidden !important;
+}
+
+header {
+  z-index: 100;
+}
+
+code:focus {
+  outline: none;
+}
+
+footer {
+  position: absolute;
+  bottom: var(--spacing-0);
+  left: var(--spacing-0);
+  z-index: 100;
+}
+
+a,
+a:link,
+a:visited,
+a:active {
+  color: var(--text-theme-front);
+  text-decoration-color: var(--color-blue);
+  text-decoration-thickness: 1px;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--color-blue);
 }

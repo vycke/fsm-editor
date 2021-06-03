@@ -1,12 +1,12 @@
 import Canvas from 'components/canvas/Canvas';
-import GithubCorner from 'components/GithubCorner';
 import { ToastProvider } from 'components/Toast';
-import Toolbar from 'components/toolbar/Toolbar';
 import { createContext, useEffect, useRef, useState } from 'react';
 import { ReactFlowProvider } from 'react-flow-renderer';
 import packageJson from '../package.json';
 import Sidebar from 'components/sidebar/Sidebar';
 import useTheme from 'hooks/useTheme';
+import Controls from 'components/controls/Controls';
+import Header from 'components/header/Header';
 
 const initial = JSON.parse(localStorage.getItem('elements')) || [];
 
@@ -43,8 +43,8 @@ export default function App({ children }) {
     <div className="grail" data-theme={theme}>
       <AppContext.Provider value={{ updateElement, instance, setElements }}>
         <ToastProvider>
-          <GithubCorner />
           <ReactFlowProvider>
+            <Header />
             <main className="reactflow-wrapper" ref={reactFlowWrapper}>
               <Canvas
                 wrapper={reactFlowWrapper}
@@ -53,10 +53,10 @@ export default function App({ children }) {
                 onLoad={setInstance}
                 instance={instance}
               />
-              <Toolbar setElements={setElements} />
+              <Controls />
             </main>
-            <Sidebar setElements={setElements} />
-            <footer>
+            <Sidebar />
+            <footer className="text-theme-front">
               <span>{`v${packageJson.version} by `}</span>
               <a href="https://crinkles.io">crinkles</a>
             </footer>

@@ -1,4 +1,4 @@
-import { cloneElement, useContext, useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import Modal from '../Modal';
 import useToastManager from '../Toast';
 import useAppStore from 'hooks/useStore';
@@ -8,7 +8,7 @@ import { useZoomPanHelper } from 'react-flow-renderer';
 import { FiUpload } from 'react-icons/fi';
 import Switch from 'components/Switch';
 
-export default function PasteModal({ children }) {
+export default function ImportModal() {
   const ref = useRef();
   const { setElements } = useContext(AppContext);
   const theme = useAppStore('theme');
@@ -26,7 +26,11 @@ export default function PasteModal({ children }) {
   }
 
   function handleSubmit() {
-    const machine = configToMachine(start, horizontal, ref.current.innerText);
+    const machine = configToMachine(
+      start,
+      horizontal ? 'horizontal' : 'vertical',
+      ref.current.innerText
+    );
 
     if (!machine) {
       add('Not a valid configuration');
@@ -41,7 +45,11 @@ export default function PasteModal({ children }) {
 
   return (
     <>
-      {cloneElement(children, { onClick: changeShow, active: show })}
+      <button
+        className="text-0 hover:bg-gray-300 px-0 py-00 text-theme-front"
+        onClick={() => setShow(true)}>
+        <FiUpload />
+      </button>
       {show && (
         <Modal
           title="Import finite state machine configuration"
@@ -69,7 +77,7 @@ export default function PasteModal({ children }) {
           <span className="italic text-00">Paste content in the box below</span>
           <pre className={`${codeColor} p-1 pb-3 full-width`}>
             <code
-              className="full-width pb-0"
+              className="full-width pb-0 text-gray-100"
               contentEditable={true}
               ref={ref}
               html={'Paste configuration here'}

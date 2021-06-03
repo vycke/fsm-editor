@@ -1,7 +1,8 @@
 #toast {
   position: fixed;
   top: 2rem;
-  right: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 999;
 
   .toast {

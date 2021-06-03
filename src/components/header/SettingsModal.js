@@ -1,9 +1,10 @@
 import Switch from 'components/Switch';
 import useAppStore, { store } from 'hooks/useStore';
-import { cloneElement, useState } from 'react';
+import { useState } from 'react';
 import Modal from '../Modal';
+import { FiSettings } from 'react-icons/fi';
 
-export default function SettingsModal({ children }) {
+export default function SettingsModal() {
   const theme = useAppStore('theme');
   const [show, setShow] = useState(false);
 
@@ -13,7 +14,11 @@ export default function SettingsModal({ children }) {
 
   return (
     <>
-      {cloneElement(children, { onClick: () => setShow(!show), active: show })}
+      <button
+        className="text-0 hover:bg-gray-300 px-0 py-00 text-theme-front"
+        onClick={() => setShow(true)}>
+        <FiSettings />
+      </button>
       {show && (
         <Modal title="Settings" onClose={() => setShow(false)} show={show}>
           <div className="flex-col">
