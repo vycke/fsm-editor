@@ -59,12 +59,7 @@ export function configToMachine(start, orientation, config) {
     const nodes = getStates(newConfig);
     const edges = getTransitions(newConfig);
 
-    const positionedNodes = autoLayout(
-      start,
-      nodes.map(({ id }) => ({ id })),
-      edges.map(({ source, target }) => ({ source, target })),
-      orientation
-    );
+    const positionedNodes = autoLayout(start, nodes, edges, orientation);
 
     const horizontal = orientation === 'horizontal';
 
