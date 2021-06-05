@@ -1,6 +1,6 @@
 import { layout } from '@crinkles/digl';
 
-const layoutConfig = { width: 100, height: 60, orientation: 'horizontal' };
+const layoutConfig = { width: 165, height: 75, orientation: 'horizontal' };
 
 export default function autoLayout(start, nodes, edges, orientation) {
   const positions = layout({

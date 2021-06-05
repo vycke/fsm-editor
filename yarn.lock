@@ -1209,10 +1209,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@crinkles/digl@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@crinkles/digl/-/digl-0.1.0.tgz#e2ff852b37fd8e8fc6f95fadd0119df65bd2d61a"
-  integrity sha512-IPuHlDx5vH78YzPVcqHuNunkSBw5PEMSljhlAeUYgQoMz+kSzBIUYN0CmV32t+K69KVJFWACFfLWMMKeJqVMFg==
+"@crinkles/digl@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@crinkles/digl/-/digl-0.2.0.tgz#80fb4b4dd0c9b6e3c4621da9e1591ad17011bc38"
+  integrity sha512-WJs0i4i1S+A+XvxtM9YN5mUJyP8Chx7MR3V4aHvMCQCniBkmKzFs1l1ripJDCIqrcugKADZup8qCYedNigwT8A==
 
 "@crinkles/feo@^1.6.1":
   version "1.6.1"
