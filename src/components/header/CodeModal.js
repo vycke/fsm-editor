@@ -58,10 +58,6 @@ export default function ImportModal() {
 
   const codeColor = theme === 'dark' ? 'bg-gray-500' : 'bg-gray-400';
 
-  function handleChange(v) {
-    setConfig(v.target.innerText);
-  }
-
   return (
     <>
       <button
@@ -96,16 +92,12 @@ export default function ImportModal() {
           <span className="italic text-00">
             You can edit the below content!
           </span>
-          <pre className={`${codeColor} p-1 pb-3 full-width`}>
-            <code
-              className="full-width pb-0 text-gray-100"
-              contentEditable
-              role="textbox"
-              tabIndex="-1"
-              onKeyDown={(e) => setConfig(e.target.innerText)}>
-              {config}
-            </code>
-          </pre>
+          <textarea
+            rows={10}
+            className={`${codeColor} p-1 pb-3 full-width text-gray-100 text-000 border-gray-400 focus:border-blue border-w-2 no-outline radius-1`}
+            onChange={(e) => setConfig(e.target.value)}
+            value={config || ''}
+          />
 
           <button
             className="text-theme-front flex-row items-center hover:text-blue mt-00"

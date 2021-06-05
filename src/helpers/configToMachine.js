@@ -59,27 +59,9 @@ export function configToMachine(start, orientation, config) {
     const nodes = getStates(newConfig);
     const edges = getTransitions(newConfig);
 
-    const positionedNodes = autoLayout(start, nodes, edges, orientation);
-
-    const horizontal = orientation === 'horizontal';
-
-    const positionedEdges = edges.map((e) => {
-      const newEdge = { ...e };
-      if (e.source === e.target) {
-        newEdge.sourceHandle = horizontal ? 'right' : 'bottom';
-        newEdge.targetHandle = horizontal ? 'bottom' : 'left';
-      } else {
-        newEdge.sourceHandle = horizontal ? 'right' : 'bottom';
-        newEdge.targetHandle = horizontal ? 'left' : 'top';
-      }
-
-      const source = nodes.find((n) => n.id === e.source);
-      if (source.data.entry === e.data.label) newEdge.animated = true;
-      return newEdge;
-    });
-
-    return [...positionedNodes, ...positionedEdges];
+    return autoLayout(start, nodes, edges, orientation);
   } catch (e) {
+    console.log(e);
     return;
   }
 }

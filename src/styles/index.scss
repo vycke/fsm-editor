@@ -55,8 +55,8 @@ header {
   }
 }
 
-code:focus {
-  outline: none;
+textarea {
+  font-family: var(--monospace);
 }
 
 footer {
