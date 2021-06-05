@@ -1,12 +1,12 @@
-import { layout } from '@crinkles/digl';
+import { digl } from '@crinkles/digl';
 
 const layoutConfig = { width: 165, height: 75, orientation: 'horizontal' };
 
 export default function autoLayout(start, nodes, edges, orientation) {
-  const positions = layout({
+  const positions = digl({
     ...layoutConfig,
     orientation,
-  })(
+  }).positions(
     start,
     nodes.map(({ id }) => ({ id })),
     edges.map(({ source, target }) => ({ source, target }))

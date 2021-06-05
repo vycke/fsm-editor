@@ -3,7 +3,7 @@
   "version": "0.7.3",
   "private": true,
   "dependencies": {
-    "@crinkles/digl": "^0.2.0",
+    "@crinkles/digl": "^0.2.1",
     "@crinkles/feo": "^1.6.1",
     "@crinkles/fsm": "^0.4.0",
     "@crinkles/pubbel": "^2.0.1",
