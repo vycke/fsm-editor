@@ -1,9 +1,11 @@
-import ExportModal from './ExportModal';
 import HelpModal from './HelpModal';
-import ImportModal from './ImportModal';
+import CodeModal from './CodeModal';
 import SettingsModal from './SettingsModal';
+import useCreateImage from 'hooks/useCreateImage';
+import { FiImage } from 'react-icons/fi';
 
 export default function Header() {
+  const downloadImage = useCreateImage('my-canvas');
   return (
     <header className="bg-theme-back-secondary text-theme-front text-0 shadow flex-row items-center justify-end">
       <svg
@@ -21,8 +23,12 @@ export default function Header() {
         />
       </svg>
 
-      <ExportModal />
-      <ImportModal />
+      <button
+        className="text-0 hover:bg-gray-300 px-0 py-00 text-theme-front"
+        onClick={downloadImage}>
+        <FiImage />
+      </button>
+      <CodeModal />
       <SettingsModal />
       <HelpModal />
     </header>

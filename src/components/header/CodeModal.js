@@ -1,35 +1,49 @@
-import { useContext, useRef, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import Modal from '../Modal';
 import useToastManager from '../Toast';
 import useAppStore from 'hooks/useStore';
 import { configToMachine } from 'helpers/configToMachine';
 import { AppContext } from 'App';
-import { useZoomPanHelper } from 'react-flow-renderer';
-import { FiUpload } from 'react-icons/fi';
+import { useStoreState, useZoomPanHelper } from 'react-flow-renderer';
+import { BiCodeCurly } from 'react-icons/bi';
+import { FiClipboard, FiDownload } from 'react-icons/fi';
 import Switch from 'components/Switch';
+import { stringifyMachine } from 'helpers/machineToConfig';
+import findStart from 'helpers/findStart';
 
 export default function ImportModal() {
-  const ref = useRef();
   const { setElements } = useContext(AppContext);
   const theme = useAppStore('theme');
   const [show, setShow] = useState(false);
-  const [start, setStart] = useState('');
   const [horizontal, setHorizontal] = useState(true);
   const { add } = useToastManager();
   const { fitView } = useZoomPanHelper();
+  const nodes = useStoreState((store) => store.nodes);
+  const edges = useStoreState((store) => store.edges);
+  const [config, setConfig] = useState('');
+  const [start, setStart] = useState('');
 
-  const codeColor = theme === 'dark' ? 'bg-gray-500' : 'bg-gray-400';
+  const resetModal = useCallback(() => {
+    if (nodes.length && edges.length) {
+      setConfig(stringifyMachine(nodes, edges));
+      setStart(findStart(nodes, edges).data.label);
+    }
+  }, [nodes, edges]);
 
-  function changeShow() {
-    setStart('');
-    setShow(!show);
+  useEffect(() => {
+    if (show) resetModal();
+  }, [show, resetModal]);
+
+  async function handleCopy() {
+    await navigator.clipboard.writeText(config);
+    add('Configuration copied to your clipboard!');
   }
 
   function handleSubmit() {
     const machine = configToMachine(
       start,
       horizontal ? 'horizontal' : 'vertical',
-      ref.current.innerText
+      config
     );
 
     if (!machine) {
@@ -38,9 +52,14 @@ export default function ImportModal() {
     }
 
     setElements(machine);
-    changeShow();
-    fitView();
+    setShow(false);
     add('Configuration imported!');
+  }
+
+  const codeColor = theme === 'dark' ? 'bg-gray-500' : 'bg-gray-400';
+
+  function handleChange(v) {
+    setConfig(v.target.innerText);
   }
 
   return (
@@ -48,12 +67,12 @@ export default function ImportModal() {
       <button
         className="text-0 hover:bg-gray-300 px-0 py-00 text-theme-front"
         onClick={() => setShow(true)}>
-        <FiUpload />
+        <BiCodeCurly />
       </button>
       {show && (
         <Modal
           title="Import finite state machine configuration"
-          onClose={changeShow}
+          onClose={() => setShow(false)}
           show={show}>
           <div className="flex-row items-center mb-0">
             <span className="mr-0">Horizontal orientation:</span>
@@ -74,21 +93,34 @@ export default function ImportModal() {
             className="px-00 py-000 radius-1 border-gray-400 focus:border-blue border-w-2 no-outline full-width mb-0"
           />
 
-          <span className="italic text-00">Paste content in the box below</span>
+          <span className="italic text-00">
+            You can edit the below content!
+          </span>
           <pre className={`${codeColor} p-1 pb-3 full-width`}>
             <code
               className="full-width pb-0 text-gray-100"
-              contentEditable={true}
-              ref={ref}
-              html={'Paste configuration here'}
-            />
+              contentEditable
+              role="textbox"
+              tabIndex="-1"
+              onKeyDown={(e) => setConfig(e.target.innerText)}>
+              {config}
+            </code>
           </pre>
+
+          <button
+            className="text-theme-front flex-row items-center hover:text-blue mt-00"
+            onClick={handleCopy}>
+            <FiClipboard />
+            <span className="ml-00 flex-col align-start text-left italic">
+              Copy the above configuration to your clipboard
+            </span>
+          </button>
 
           <button
             onClick={handleSubmit}
             className="mt-2 flex-row items-center justify-center px-00 py-000 text-00 text-gray-100 bg-blue hover:bg-blue-dark radius-1 full-width shadow transition">
-            <FiUpload className="mr-00" />
-            Import configuration
+            <FiDownload className="mr-00" />
+            Import the above configuration
           </button>
         </Modal>
       )}

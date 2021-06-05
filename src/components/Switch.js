@@ -1,12 +1,17 @@
-export default function Switch({ className, checked, onClick }) {
-  const handleClick = () => {
-    onClick();
-  };
-
+export default function Switch({ className, checked, onClick, label }) {
   return (
-    <label className="switch">
-      <input type="checkbox" checked={checked} onChange={handleClick} />
-      <span className="slider" />
+    <label htmlFor="toggle" className="switch">
+      {label}
+      <button
+        className="ml-000"
+        type="button"
+        id="toggle"
+        role="switch"
+        aria-checked={checked}
+        onClick={onClick}>
+        <span>yes</span>
+        <span>no</span>
+      </button>
     </label>
   );
 }
