@@ -23,12 +23,12 @@ export default function HelpModal() {
               the canvas
             </li>
             <li>
-              Configure automated transitions by setting the 'entry' and 'delay'
-              settings on a state (dotted transitions)
-            </li>
-            <li>
               Add transitions by 'click-n-hold' on the handles of a state and
               move to another state
+            </li>
+            <li>
+              Configure automated transitions by setting the 'entry' and 'delay'
+              settings on a state (dotted transitions)
             </li>
             <li>
               Add guard conditions to transition (based on a <code>.ctx</code>{' '}
@@ -36,19 +36,24 @@ export default function HelpModal() {
             </li>
             <li>Export the canvas as a .PNG</li>
             <li>
+              Magically create a layout based on the{' '}
+              <a href="https://github.com/crinklesio/digl"> DIGL engine</a>
+            </li>
+            <li>
+              Set a preferred orientation in the settings for the layout engine
+            </li>
+            <li>
+              Light and dark-mode (note: dark-mode impacts the background color
+              of the .PNG export)
+            </li>
+            <li>
               Export the finite state machine configuration, useable for{' '}
               <a href="https://github.com/crinklesio/fsm"> this fsm library</a>,
               or <a href="https://github.com/davidkpiano/xstate">xstate *</a>).{' '}
             </li>
             <li>
-              Import said configuration and the editor will create a rough graph
-              for you, based on the{' '}
-              <a href="https://github.com/crinklesio/digl">DIGL algorithm</a>.
-            </li>
-
-            <li>
-              Light and dark-mode (note: dark-mode impacts the background color
-              of the .PNG export)
+              Import said configuration and the editor will create a machine for
+              you (with the ability to alter the configuration before importing)
             </li>
           </ul>
 

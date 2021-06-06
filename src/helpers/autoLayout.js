@@ -17,9 +17,6 @@ function findRankPosition(ranks, edge) {
 
 export default function autoLayout(start, nodes, edges, orientation) {
   const layout = digl({ ...layoutConfig, orientation });
-
-  console.log(start, nodes, edges);
-
   const positions = layout.positions(start, nodes, edges);
   const ranks = layout.ranks(start, edges);
 

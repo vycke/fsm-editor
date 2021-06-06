@@ -1,15 +1,23 @@
 import Switch from 'components/Switch';
-import useAppStore, { store } from 'hooks/useStore';
+import { store } from 'hooks/useStore';
 import { useState } from 'react';
 import Modal from '../Modal';
 import { FiSettings } from 'react-icons/fi';
+import useTheme from 'hooks/useTheme';
+import useOrientation from 'hooks/useOrientation';
 
 export default function SettingsModal() {
-  const theme = useAppStore('theme');
+  const theme = useTheme();
+  const orientation = useOrientation();
   const [show, setShow] = useState(false);
 
   function handleChangeTheme() {
     store.theme = theme === 'dark' ? 'light' : 'dark';
+  }
+
+  function handleChangeOrienttation() {
+    store.orientation =
+      orientation === 'horizontal' ? 'vertical' : 'horizontal';
   }
 
   return (
@@ -23,10 +31,24 @@ export default function SettingsModal() {
         <Modal title="Settings" onClose={() => setShow(false)} show={show}>
           <div className="flex-col">
             <div className="flex-row items-center">
-              <span className="mr-0">Turn on dark mode * </span>
-              <Switch checked={theme === 'dark'} onClick={handleChangeTheme} />
+              <span className="mr-0 flex-grow">
+                Prefer horizontal orientation{' '}
+              </span>
+              <Switch
+                className="mr-3"
+                checked={orientation === 'horizontal'}
+                onClick={handleChangeOrienttation}
+              />
             </div>
-            <span className="mt-0 text-000 italic">
+            <div className="flex-row items-center mt-0">
+              <span className="mr-0 flex-grow">Turn on dark mode * </span>
+              <Switch
+                className="mr-3"
+                checked={theme === 'dark'}
+                onClick={handleChangeTheme}
+              />
+            </div>
+            <span className="mt-00 text-000 italic">
               * Dark mode will also add a dark background to the exported images
             </span>
           </div>

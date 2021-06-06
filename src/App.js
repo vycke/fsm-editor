@@ -4,16 +4,16 @@ import { createContext, useEffect, useRef, useState } from 'react';
 import { ReactFlowProvider } from 'react-flow-renderer';
 import packageJson from '../package.json';
 import Sidebar from 'components/sidebar/Sidebar';
-import useTheme from 'hooks/useTheme';
 import Controls from 'components/controls/Controls';
 import Header from 'components/header/Header';
+import useAppStore from 'hooks/useStore';
 
 const initial = JSON.parse(localStorage.getItem('elements')) || [];
 
 export const AppContext = createContext();
 
 export default function App({ children }) {
-  const theme = useTheme();
+  const theme = useAppStore('theme');
   const [instance, setInstance] = useState(null);
   const reactFlowWrapper = useRef(null);
   const [elements, setElements] = useState(initial);

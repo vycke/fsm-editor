@@ -54,6 +54,7 @@ export default function ImportModal() {
     setElements(machine);
     setShow(false);
     add('Configuration imported!');
+    setTimeout(() => fitView(), 250);
   }
 
   const codeColor = theme === 'dark' ? 'bg-gray-500' : 'bg-gray-400';

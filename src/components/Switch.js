@@ -1,6 +1,6 @@
-export default function Switch({ className, checked, onClick, label }) {
+export default function Switch({ className = '', checked, onClick, label }) {
   return (
-    <label htmlFor="toggle" className="switch">
+    <label htmlFor="toggle" className={`switch ${className}`}>
       {label}
       <button
         className="ml-000"

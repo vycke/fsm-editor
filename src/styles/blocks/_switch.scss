@@ -3,7 +3,7 @@ button[role='switch'] {
   background-color: var(--color-gray-300);
   border: 2px solid var(--color-gray-300);
   border-radius: 1rem;
-  transition: all 200ms ease-in-out;
+  transition: all 400ms ease-in-out;
 }
 
 button[role='switch'][aria-checked='true'] {
@@ -19,7 +19,7 @@ button[role='switch'] span {
   color: var(--color-gray-100);
   border-radius: 2rem;
   pointer-events: none;
-  transition: all 200ms ease-in-out;
+  transition: all 400ms ease-in-out;
 }
 
 button[role='switch'][aria-checked='true'] > :last-child,

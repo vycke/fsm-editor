@@ -1,8 +1,12 @@
 import { useReducer, useRef, useLayoutEffect } from 'react';
 import { proxy } from '@crinkles/pubbel';
 
-const init = localStorage.getItem('theme') || 'light';
-export const store = proxy(() => ({ theme: init }));
+const initTheme = localStorage.getItem('theme') || 'light';
+const initOrientation = localStorage.getItem('orientation') || 'vertical';
+export const store = proxy(() => ({
+  theme: initTheme,
+  orientation: initOrientation,
+}));
 
 export default function useAppStore(key) {
   const [, rerender] = useReducer((c) => c + 1, 0);
