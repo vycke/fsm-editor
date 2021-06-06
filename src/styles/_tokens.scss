@@ -29,6 +29,17 @@ $themes: (
   'light': $light-theme,
 );
 
+// Size system
+$sizes: (
+  '00': 8rem,
+  '0': 15rem,
+  '1': 20rem,
+  '2': 30rem,
+  '3': 40rem,
+  '4': 52.5rem,
+  '5': 75rem,
+) !default;
+
 :root {
   --transition: all 200ms ease-in-out;
 }

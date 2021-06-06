@@ -20,15 +20,17 @@ export default function Modal({ children, title, onClose, show }) {
       <div
         className="modal-dialog | bg-theme-back-secondary shadow flex-col radius-2 p-0 text-theme-front"
         ref={ref}>
-        <div className="text-0 flex-row justify-between items-center mb-2">
-          <span className="mr-2">{title}</span>
-          <button
-            aria-label="close"
-            onClick={onClose}
-            className="text-theme-front flex-row items-center">
-            <FaRegTimesCircle />
-          </button>
-        </div>
+        {title && (
+          <div className="text-0 flex-row justify-between items-center mb-2">
+            <span className="mr-2">{title}</span>
+            <button
+              aria-label="close"
+              onClick={onClose}
+              className="text-theme-front flex-row items-center">
+              <FaRegTimesCircle />
+            </button>
+          </div>
+        )}
         <div className="modal-body">{children}</div>
       </div>
     </div>,

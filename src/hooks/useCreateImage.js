@@ -1,6 +1,5 @@
 import useToastManager from 'components/Toast';
-import download from 'downloadjs';
-import { toPng } from 'html-to-image';
+import createImage from 'helpers/createImage';
 import { useZoomPanHelper } from 'react-flow-renderer';
 
 export default function useCreateImage(id) {
@@ -8,12 +7,10 @@ export default function useCreateImage(id) {
   const { add } = useToastManager();
 
   async function handler() {
-    var node = document.getElementById(id);
     try {
       fitView();
       add('Preparing for download...');
-      const dataUrl = await toPng(node);
-      download(dataUrl, 'my-finite-state-machine.png');
+      await createImage(id);
       add('Image created! Select your location to store it.');
     } catch (e) {
       add('Something went wrong');

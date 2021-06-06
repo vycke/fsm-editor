@@ -55,6 +55,9 @@ export default function HelpModal() {
               Import said configuration and the editor will create a machine for
               you (with the ability to alter the configuration before importing)
             </li>
+            <li>
+              Open/cose the command palette via <code>ctrl + p</code>
+            </li>
           </ul>
 
           <i className="mt-1 text-000">

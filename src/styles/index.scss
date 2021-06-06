@@ -21,6 +21,7 @@ body {
 @import './blocks/modal';
 @import './blocks/switch';
 @import './blocks/controls';
+@import './blocks/command';
 
 .no-outline:focus {
   outline: none;
@@ -78,4 +79,8 @@ a:active {
 
 a:hover {
   color: var(--color-blue);
+}
+
+.monospace {
+  font-family: var(--monospace);
 }
