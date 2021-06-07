@@ -5,6 +5,7 @@ import { Fragment, useContext, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useStoreState } from 'react-flow-renderer';
 import { FiTerminal } from 'react-icons/fi';
+import Command from './Command';
 import commands from './commands';
 
 export default function CommandPalette() {
@@ -85,20 +86,12 @@ export default function CommandPalette() {
                 />
                 <div className="command-palette | flex-col">
                   {filtered.map((v) => (
-                    <button
-                      onClick={async () => await executeCommand(v)}
+                    <Command
                       key={v.key}
-                      className="split-left split-w-00 split-min-w-00 px-0 text-left hover:bg-gray-500 py-000">
-                      <div>
-                        <span className="text-000 monospace radius-0 px-000 bg-gray-300 text-gray-500">
-                          {v.group}
-                        </span>
-                      </div>
-
-                      <span className="text-00 text-gray-300 px-000">
-                        {v.hint}
-                      </span>
-                    </button>
+                      search={command}
+                      command={v}
+                      execute={executeCommand}
+                    />
                   ))}
                 </div>
               </div>
