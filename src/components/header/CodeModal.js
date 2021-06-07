@@ -1,7 +1,7 @@
 import { useCallback, useContext, useEffect, useState } from 'react';
 import Modal from '../Modal';
 import useToastManager from '../Toast';
-import useAppStore from 'hooks/useStore';
+import useAppStore, { store } from 'hooks/useStore';
 import { configToMachine } from 'helpers/configToMachine';
 import { AppContext } from 'App';
 import { useStoreState, useZoomPanHelper } from 'react-flow-renderer';
@@ -13,9 +13,9 @@ import findStart from 'helpers/findStart';
 
 export default function ImportModal() {
   const { setElements } = useContext(AppContext);
+  const orientation = useAppStore('orientation');
   const theme = useAppStore('theme');
   const [show, setShow] = useState(false);
-  const [horizontal, setHorizontal] = useState(true);
   const { add } = useToastManager();
   const { fitView } = useZoomPanHelper();
   const nodes = useStoreState((store) => store.nodes);
@@ -40,11 +40,7 @@ export default function ImportModal() {
   }
 
   function handleSubmit() {
-    const machine = configToMachine(
-      start,
-      horizontal ? 'horizontal' : 'vertical',
-      config
-    );
+    const machine = configToMachine(start, orientation, config);
 
     if (!machine) {
       add('Not a valid configuration');
@@ -74,8 +70,12 @@ export default function ImportModal() {
           <div className="flex-row items-center mb-0">
             <span className="mr-0">Horizontal orientation:</span>
             <Switch
-              checked={horizontal}
-              onClick={() => setHorizontal(!horizontal)}
+              checked={orientation === 'horizontal'}
+              onClick={() =>
+                store.update('orientation', (h) =>
+                  h === 'horizontal' ? 'vertical' : 'horizontal'
+                )
+              }
             />
           </div>
 
