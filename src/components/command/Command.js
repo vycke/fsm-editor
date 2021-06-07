@@ -1,6 +1,6 @@
 export default function Command({ execute, command, search }) {
   let tokens;
-  if (search.length < 2) tokens = [command.hint];
+  if (!search.length) tokens = [command.hint];
   else tokens = command.hint.split(new RegExp(search, 'gi'));
 
   return (

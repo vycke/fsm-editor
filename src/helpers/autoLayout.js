@@ -44,16 +44,14 @@ export default function autoLayout(start, nodes, edges, orientation) {
         horizontal ? 'bottom' : 'right';
       newEdge[pos[0].y < pos[1].y ? 'targetHandle' : 'sourceHandle'] =
         horizontal ? 'top' : 'left';
+      // Back to prev. rank
+    } else if (pos[0].x > pos[1].x) {
+      newEdge.sourceHandle = horizontal ? 'bottom' : 'left';
+      newEdge.targetHandle = horizontal ? 'bottom' : 'left';
       // Non-first edge between source & target
     } else if (handled.includes(`${e.source}-${e.target}`)) {
-      newEdge.sourceHandle = horizontal ? 'right' : 'bottom';
+      newEdge.sourceHandle = horizontal ? 'top' : 'right';
       newEdge.targetHandle = horizontal ? 'top' : 'right';
-
-      const node = positionedNodes.find((n) => n.id === e.target);
-      const index = positionedNodes.findIndex((n) => n.id === e.target);
-
-      if (node && horizontal) node.position.y = node.position.y + 50;
-      if (node && !horizontal) node.position.x = node.position.x - 120;
     } else {
       newEdge.sourceHandle = horizontal ? 'right' : 'bottom';
       newEdge.targetHandle = horizontal ? 'left' : 'top';
