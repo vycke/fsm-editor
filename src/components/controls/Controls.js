@@ -35,7 +35,8 @@ export default function Controls() {
   }
 
   function layout() {
-    const start = findStart(nodes, edges).data.label;
+    const start = findStart(nodes, edges)?.data?.label;
+    if (!start) return;
     const config = stringifyMachine(nodes, edges);
     const machine = configToMachine(start, orientation, config);
     if (!machine) return;

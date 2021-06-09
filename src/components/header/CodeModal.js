@@ -26,7 +26,7 @@ export default function ImportModal() {
   const resetModal = useCallback(() => {
     if (nodes.length && edges.length) {
       setConfig(stringifyMachine(nodes, edges));
-      setStart(findStart(nodes, edges).data.label);
+      setStart(findStart(nodes, edges)?.data?.label || '');
     }
   }, [nodes, edges]);
 

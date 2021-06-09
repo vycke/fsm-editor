@@ -61,6 +61,7 @@ export function configToMachine(start, orientation, config) {
 
     return autoLayout(start, nodes, edges, orientation);
   } catch (e) {
+    console.log(e);
     return;
   }
 }

@@ -35,7 +35,8 @@ const commands = [
     group: 'canvas',
     hint: 'Magically layout the machine',
     execute: (n, e, set, instance) => {
-      const start = findStart(n, e).data.label;
+      const start = findStart(n, e)?.data?.label;
+      if (!start) return;
       const config = stringifyMachine(n, e);
       const machine = configToMachine(start, store.orientation, config);
       if (!machine) return;

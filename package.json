@@ -1,6 +1,6 @@
 {
   "name": "fsm-editor",
-  "version": "0.8.3",
+  "version": "0.8.4",
   "private": true,
   "dependencies": {
     "@crinkles/digl": "^0.2.3",
