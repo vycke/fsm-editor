@@ -1209,20 +1209,20 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@crinkles/digl@^0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@crinkles/digl/-/digl-0.2.3.tgz#e836a50a0f9efd85585d0b9263a96dbfc9bd5ab1"
-  integrity sha512-Y1CW5p1baukyPFu3CukdrxXn4q7E9VUEaYhfvtmU3nMgD+dBsahX+3TrDm1YLtp/cOXHX4lrxMaFQmg/ZGQciA==
+"@crinkles/digl@^0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@crinkles/digl/-/digl-0.2.4.tgz#13fee7a09a1bd31d659c96c9cd61859a0241f39f"
+  integrity sha512-ScL6CKQWTf1UTFIRxTYyYMKW9vVpuJkcoXOjdpEVrtW3IURH4jU141sqwZG77AiTClbnEaU/GhTPfaG+01TSog==
 
 "@crinkles/feo@^1.6.1":
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/@crinkles/feo/-/feo-1.6.1.tgz#b3d5cfc8bbd01fa476096f409de91cd3dc419fa1"
   integrity sha512-SdtEghvpLWw0ZxUPxxZxQL7rU2gJUncsAfJw7VhqGINatQqtTXwmpLBjgvhhPhrlJBLm6kBT4TEO9kBFcEiQhQ==
 
-"@crinkles/fsm@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@crinkles/fsm/-/fsm-0.4.0.tgz#2fc5bfc22793ca832009f7c2d82b701517bcd30a"
-  integrity sha512-pv/pG6b4JnXlP+Vs0jK5mYesUDt4640KZiJe/m7ILnu2weYiOdpRT4D0sw/EfJJHIY6Hur3tXOkfBX1N/WKXxw==
+"@crinkles/fsm@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@crinkles/fsm/-/fsm-0.6.0.tgz#52c711f0e7a575343b547906e0a7dc5eed03b7b7"
+  integrity sha512-wxYzN4EylTeJjqtj6VfI5AeWvb19zyWQFP1g/T0K80FEyTubrWtN7WpC5wovxXH88z9d+Zm7fSRsN9ENFwLc4Q==
 
 "@crinkles/pubbel@^2.0.1":
   version "2.0.1"

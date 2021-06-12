@@ -5,9 +5,10 @@ function machineToConfig(nodes, edges) {
   nodes.forEach((n) => {
     config[n.data.label] = {};
     if (n.data.entry) {
-      const str = `[(send) => send('${n.data.entry}', { delay: ${
-        n.data.delay || 0
-      } })]`.replace(', { delay: 0 }', '');
+      const str = `[send('${n.data.entry}', ${n.data.delay || 0})]`.replace(
+        ', 0',
+        ''
+      );
       config[n.data.label].entry = str;
     }
   });

@@ -1,3 +1,4 @@
+import { send } from '@crinkles/fsm';
 import useFsm from 'hooks/useFsm';
 import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
@@ -8,9 +9,7 @@ const states = {
       REMOVED: 'notvisible',
       CREATED: 'visible',
     },
-    entry: (send) => {
-      send('REMOVED', { delay: 6000 });
-    },
+    entry: send('REMOVED', 6000),
   },
   notvisible: {
     on: {

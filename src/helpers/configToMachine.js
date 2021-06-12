@@ -8,9 +8,9 @@ function getStates(config) {
   for (const key in config) {
     const state = { id: key, type: 'state', data: { label: key } };
     if (config[key].entry) {
-      const token = config[key].entry.split(" => send('")[1];
+      const token = config[key].entry.split("send('")[1];
       const action = token.split("'")[0];
-      const delay = token.split('delay: ')?.[1]?.replace(' })', '');
+      const delay = token.split(',')?.[1]?.replaceAll(' ', '');
 
       if (action) state.data.entry = action;
       if (delay) state.data.delay = delay;

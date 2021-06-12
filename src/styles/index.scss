@@ -91,6 +91,11 @@ a:hover {
   width: 1rem;
 }
 
+/* text-area resizer */
+::-webkit-resizer {
+  background-color: var(--color-gray-400);
+}
+
 /* Track */
 ::-webkit-scrollbar-track {
   background-color: var(--color-gray-400);
