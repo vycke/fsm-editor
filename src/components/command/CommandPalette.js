@@ -1,5 +1,6 @@
 import { AppContext } from 'App';
 import useToastManager from 'components/Toast';
+import useModalTransition from 'hooks/useModalTransition';
 import useOutsideClick from 'hooks/useOutsideClick';
 import { Fragment, useContext, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
@@ -11,7 +12,7 @@ import commands from './commands';
 export default function CommandPalette() {
   const ref = useRef();
   const innerRef = useRef();
-  const [show, setShow] = useState(false);
+  const { visible, close, open, state, change } = useModalTransition();
   const [command, setCommand] = useState('');
   const { add } = useToastManager();
   const { setElements, instance } = useContext(AppContext);
@@ -21,17 +22,17 @@ export default function CommandPalette() {
   // Add global listener to open the command paletttet
   useEffect(() => {
     const list = window.addEventListener('keydown', (e) => {
-      if (e.ctrlKey && e.key === 'p') setShow((s) => !s);
+      if (e.ctrlKey && e.key === 'p') change();
     });
-  }, []);
+  }, []); //eslint-disable-line
 
   // On open, set focus on the input field
   useEffect(() => {
-    if (show) innerRef.current.focus();
-  }, [show]);
+    if (visible) innerRef.current.focus();
+  }, [visible]);
 
   // Ability to close the window with an outside click
-  useOutsideClick(ref, show, close);
+  useOutsideClick(ref, visible, close);
 
   // Filter all commands based on typed command
   const filtered = commands.filter((c) =>
@@ -40,8 +41,8 @@ export default function CommandPalette() {
       .includes(command.split(' ')[0].toLocaleLowerCase())
   );
 
-  function close() {
-    setShow('');
+  function handleClose() {
+    close();
     setCommand('');
   }
 
@@ -61,10 +62,10 @@ export default function CommandPalette() {
     <>
       <button
         className="text-0 hover:bg-gray-300 px-0 py-00 text-theme-front"
-        onClick={() => setShow(true)}>
+        onClick={open}>
         <FiTerminal />
       </button>
-      {show &&
+      {visible &&
         createPortal(
           <div
             id="modal"
@@ -73,6 +74,7 @@ export default function CommandPalette() {
             role="dialog"
             tabIndex="-1">
             <div
+              data-state={state}
               className="modal-dialog | bg-gray-400 shadow flex-col radius-2 text-gray-100"
               ref={ref}>
               <div className="modal-body | radius-2">

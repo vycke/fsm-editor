@@ -4,10 +4,12 @@ import React, { useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { FaRegTimesCircle } from 'react-icons/fa';
 
-export default function Modal({ children, title, onClose, show }) {
+export default function Modal({ children, title, onClose, visible, state }) {
   const ref = useRef();
   const theme = useAppStore('theme');
-  useOutsideClick(ref, show, onClose);
+  useOutsideClick(ref, visible, onClose);
+
+  if (!visible) return null;
 
   return createPortal(
     <div
@@ -18,6 +20,7 @@ export default function Modal({ children, title, onClose, show }) {
       data-theme={theme}
       tabIndex="-1">
       <div
+        data-state={state}
         className="modal-dialog | bg-theme-back-secondary shadow flex-col radius-2 p-0 text-theme-front"
         ref={ref}>
         {title && (

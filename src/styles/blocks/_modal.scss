@@ -22,6 +22,14 @@
   background-clip: padding-box;
   outline: 0;
   pointer-events: auto;
+  transition: all 300ms ease-in-out;
+  opacity: 1;
+}
+
+.modal-dialog[data-state='appearing'],
+.modal-dialog[data-state='dissapearing'] {
+  opacity: 0;
+  transform: translateY(-30rem);
 }
 
 .modal-body {
