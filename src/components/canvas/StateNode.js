@@ -3,7 +3,7 @@ import { Handle } from 'react-flow-renderer';
 export default function StateNode({ data, selected, id, ...props }) {
   return (
     <div
-      className="node | bg-blue text-0 text-gray-100 radius-1 py-000 px-0 border-solid border-w-2"
+      className="node | bg-blue text-0 text-gray-100 radius-000 py-000 px-0 border-solid border-w-2"
       data-selected={selected}>
       <div>{data.label}</div>
       <Handle

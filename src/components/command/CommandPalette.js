@@ -75,9 +75,9 @@ export default function CommandPalette() {
             tabIndex="-1">
             <div
               data-state={state}
-              className="modal-dialog | bg-gray-400 shadow flex-col radius-2 text-gray-100"
+              className="modal-dialog | bg-gray-400 shadow flex-col radius-00 text-gray-100"
               ref={ref}>
-              <div className="modal-body | radius-2">
+              <div className="modal-body | radius-00">
                 <input
                   className="monospace full-width no-outline bg-gray-400 border-gray-400 text-gray-100 p-0"
                   value={command}

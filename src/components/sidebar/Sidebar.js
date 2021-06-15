@@ -75,7 +75,7 @@ export default function Sidebar() {
         onFocus={(e) => e.target.select()}
         value={selected?.data?.label ?? ''}
         onChange={updateElement('label', selected?.id)}
-        className="px-00 py-000 radius-1 border-gray-400 focus:border-blue border-w-2 no-outline full-width"
+        className="px-00 py-000 radius-000 border-gray-400 focus:border-blue border-w-2 no-outline full-width"
       />
 
       {!isEdge && edges?.length > 0 && (
@@ -90,7 +90,7 @@ export default function Sidebar() {
             onChange={setEntryAction}
             id="entry"
             value={selected?.data?.entry ?? 'default'}
-            className="px-00 py-00 radius-1 border-gray-400 focus:border-blue border-w-2 no-outline full-width">
+            className="px-00 py-00 radius-000 border-gray-400 focus:border-blue border-w-2 no-outline full-width">
             <option value={DEFAULT_ACTION}>---</option>
             {edges?.map((e, i) => (
               <option key={i} value={e.data.label}>
@@ -113,7 +113,7 @@ export default function Sidebar() {
             placeholder="e.g. 3000"
             value={selected?.data?.delay ?? ''}
             onChange={updateElement('delay', selected?.id)}
-            className="px-00 py-000 radius-1 border-gray-400 focus:border-blue border-w-2 no-outline full-width"
+            className="px-00 py-000 radius-000 border-gray-400 focus:border-blue border-w-2 no-outline full-width"
           />
         </>
       )}
@@ -130,14 +130,14 @@ export default function Sidebar() {
             placeholder="e.g.(ctx) => ctx.isAllowed"
             value={selected?.data?.guard ?? ''}
             onChange={updateElement('guard', selected?.id)}
-            className="px-00 py-000 radius-1 border-gray-400 focus:border-blue border-w-2 no-outline full-width"
+            className="px-00 py-000 radius-000 border-gray-400 focus:border-blue border-w-2 no-outline full-width"
           />
         </>
       )}
 
       <button
         onClick={handleDelete}
-        className="flex-row items-center justify-center px-00 py-000 text-00 text-gray-100 bg-red hover:bg-red-dark radius-1 full-width shadow transition">
+        className="flex-row items-center justify-center px-00 py-000 text-00 text-gray-100 bg-red hover:bg-red-dark radius-000 full-width shadow transition">
         <FiTrash2 className="mr-00" />
         Delete element
       </button>

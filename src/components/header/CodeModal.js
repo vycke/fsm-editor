@@ -89,13 +89,13 @@ export default function ImportModal() {
           placeholder="Element name"
           value={start}
           onChange={(e) => setStart(e.target.value)}
-          className="px-00 py-000 radius-1 border-gray-400 focus:border-blue border-w-2 no-outline full-width mb-0"
+          className="px-00 py-000 radius-000 border-gray-400 focus:border-blue border-w-2 no-outline full-width mb-0"
         />
 
         <span className="italic text-00">You can edit the below content!</span>
         <textarea
           rows={10}
-          className={`${codeColor} p-1 pb-3 full-width text-gray-100 text-000 border-gray-400 focus:border-blue border-w-2 no-outline radius-1`}
+          className={`${codeColor} p-1 pb-3 full-width text-gray-100 text-000 border-gray-400 focus:border-blue border-w-2 no-outline radius-000`}
           onChange={(e) => setConfig(e.target.value)}
           value={config || ''}
         />
@@ -111,7 +111,7 @@ export default function ImportModal() {
 
         <button
           onClick={handleSubmit}
-          className="mt-2 flex-row items-center justify-center px-00 py-000 text-00 text-gray-100 bg-blue hover:bg-blue-dark radius-1 full-width shadow transition">
+          className="mt-2 flex-row items-center justify-center px-00 py-000 text-00 text-gray-100 bg-blue hover:bg-blue-dark radius-000 full-width shadow transition">
           <FiDownload className="mr-00" />
           Import the above configuration
         </button>

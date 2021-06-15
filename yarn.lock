@@ -1214,10 +1214,10 @@
   resolved "https://registry.yarnpkg.com/@crinkles/digl/-/digl-0.2.4.tgz#13fee7a09a1bd31d659c96c9cd61859a0241f39f"
   integrity sha512-ScL6CKQWTf1UTFIRxTYyYMKW9vVpuJkcoXOjdpEVrtW3IURH4jU141sqwZG77AiTClbnEaU/GhTPfaG+01TSog==
 
-"@crinkles/feo@^1.6.1":
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/@crinkles/feo/-/feo-1.6.1.tgz#b3d5cfc8bbd01fa476096f409de91cd3dc419fa1"
-  integrity sha512-SdtEghvpLWw0ZxUPxxZxQL7rU2gJUncsAfJw7VhqGINatQqtTXwmpLBjgvhhPhrlJBLm6kBT4TEO9kBFcEiQhQ==
+"@crinkles/feo@^1.7.5":
+  version "1.7.5"
+  resolved "https://registry.yarnpkg.com/@crinkles/feo/-/feo-1.7.5.tgz#52dd22fa30cf6c6d35d4581ff6ecbfeb965e5ae1"
+  integrity sha512-mjvisQx7Jcir1OGzinxHHQpE+OUayY/d1G3xX47V1pV4FdprkK7m/FRpeNliJK+3whQddKz43DRlWdHgBXteGg==
 
 "@crinkles/fsm@^0.6.0":
   version "0.6.0"

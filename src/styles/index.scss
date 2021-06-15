@@ -7,7 +7,10 @@
 html,
 body,
 .grail {
-  color: var(--theme-front);
+  min-width: var(--size-1);
+  color: var(--color-gray-100);
+  font-family: var(--sans-serif);
+  background-color: var(--color-gray-500);
   line-height: 1.4;
   background-color: var(--theme-back);
 }

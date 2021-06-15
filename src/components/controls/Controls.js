@@ -48,7 +48,7 @@ export default function Controls() {
   }
 
   return (
-    <div className="controls | flex-col shadow radius-1 bg-blue">
+    <div className="controls | flex-col shadow radius-000 bg-blue">
       <ControlItem
         data-tooltip="Click, drag and drop to add a new node"
         onDragStart={(event) => onDragStart(event, 'state')}

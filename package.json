@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@crinkles/digl": "^0.2.4",
-    "@crinkles/feo": "^1.6.1",
+    "@crinkles/feo": "^1.7.5",
     "@crinkles/fsm": "^0.6.0",
     "@crinkles/pubbel": "^2.0.1",
     "@testing-library/jest-dom": "^5.11.4",
