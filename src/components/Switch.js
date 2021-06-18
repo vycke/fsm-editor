@@ -1,3 +1,5 @@
+import { FiCheck, FiX } from 'react-icons/fi';
+
 export default function Switch({ className = '', checked, onClick, label }) {
   return (
     <label htmlFor="toggle" className={`switch ${className}`}>
@@ -9,8 +11,12 @@ export default function Switch({ className = '', checked, onClick, label }) {
         role="switch"
         aria-checked={checked}
         onClick={onClick}>
-        <span>yes</span>
-        <span>no</span>
+        <span>
+          <FiCheck />
+        </span>
+        <span>
+          <FiX />
+        </span>
       </button>
     </label>
   );

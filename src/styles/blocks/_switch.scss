@@ -1,6 +1,5 @@
 button[role='switch'] {
-  height: 1.8rem;
-  min-width: 4.7rem;
+  height: calc(1.4rem + 4px);
   background-color: var(--color-gray-300);
   border: 2px solid var(--color-gray-300);
   border-radius: 1rem;
@@ -14,9 +13,10 @@ button[role='switch'][aria-checked='true'] {
 
 button[role='switch'] span {
   display: inline-block;
-  line-height: calc(1.8rem - 4px);
-  height: calc(1.8rem - 4px);
-  min-width: 2.2rem;
+  font-size: 1.4rem;
+  line-height: 1.4rem;
+  height: 1.4rem;
+  min-width: 1.8rem;
   color: var(--color-gray-100);
   border-radius: 2rem;
   pointer-events: none;
