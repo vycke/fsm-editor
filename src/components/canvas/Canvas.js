@@ -72,7 +72,7 @@ export default function Canvas({
 
   return (
     <ReactFlow
-      className="bg-theme-back"
+      className="bg-back"
       id="my-canvas"
       elements={elements}
       onConnect={onConnect}

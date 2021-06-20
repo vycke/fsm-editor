@@ -8,7 +8,7 @@ import CommandBar from 'components/command/CommandPalette';
 export default function Header() {
   const downloadImage = useCreateImage('my-canvas');
   return (
-    <header className="bg-theme-back-secondary text-theme-front text-0 shadow flex-row items-center justify-end">
+    <header className="bg-back-secondary text-front text-0 shadow flex-row items-center justify-end">
       <svg
         height="20px"
         width="20px"
@@ -27,7 +27,7 @@ export default function Header() {
       <CommandBar />
 
       <button
-        className="text-0 hover:bg-gray-300 px-0 py-00 text-theme-front"
+        className="text-0 hover:bg-gray-300 px-0 py-00 text-front"
         onClick={downloadImage}>
         <FiImage />
       </button>

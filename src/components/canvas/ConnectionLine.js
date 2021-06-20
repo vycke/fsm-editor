@@ -29,7 +29,7 @@ export default function ConnectionLine({
     <g>
       <path
         fill="none"
-        stroke="var(--theme-transition)"
+        stroke="var(--color-transition)"
         strokeWidth={1.5}
         className="animated"
         d={edgePath}
@@ -39,7 +39,7 @@ export default function ConnectionLine({
         cy={targetY}
         fill="#fff"
         r={3}
-        stroke="var(--theme-transition)"
+        stroke="var(--color-transition)"
         strokeWidth={1.5}
       />
     </g>

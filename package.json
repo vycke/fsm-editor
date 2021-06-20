@@ -1,10 +1,10 @@
 {
   "name": "fsm-editor",
-  "version": "0.8.5",
+  "version": "0.8.6",
   "private": true,
   "dependencies": {
     "@crinkles/digl": "^0.2.4",
-    "@crinkles/feo": "^1.7.5",
+    "@crinkles/feo": "^1.9.0",
     "@crinkles/fsm": "^0.6.0",
     "@crinkles/pubbel": "^2.0.1",
     "@testing-library/jest-dom": "^5.11.4",

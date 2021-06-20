@@ -62,10 +62,10 @@ export default function Sidebar() {
 
   return (
     <aside
-      className="sidebar | bg-theme-back-secondary flex-col items-start py-1 px-0 text-theme-front shadow"
+      className="sidebar | bg-back-secondary flex-col items-start py-1 px-0 text-front shadow"
       data-opened={state}>
       <h2 className="text-1 mb-0">Element settings</h2>
-      <label className="text-00 text-theme-front mb-000" htmlFor="name">
+      <label className="text-00 text-front mb-000" htmlFor="name">
         Element name
       </label>
       <input
@@ -80,9 +80,7 @@ export default function Sidebar() {
 
       {!isEdge && edges?.length > 0 && (
         <>
-          <label
-            className="text-00 text-theme-front mt-0 mb-000"
-            htmlFor="entry">
+          <label className="text-00 text-front mt-0 mb-000" htmlFor="entry">
             State entry action
           </label>
           {/* eslint-disable-next-line jsx-a11y/no-onchange */}
@@ -103,9 +101,7 @@ export default function Sidebar() {
 
       {!isEdge && selected?.data?.entry && (
         <>
-          <label
-            className="mt-0 text-00 text-theme-front mb-000"
-            htmlFor="delay">
+          <label className="mt-0 text-00 text-front mb-000" htmlFor="delay">
             State entry delay
           </label>
           <input
@@ -120,9 +116,7 @@ export default function Sidebar() {
 
       {isEdge && (
         <>
-          <label
-            className="mt-0 text-00 text-theme-front mb-000"
-            htmlFor="guard">
+          <label className="mt-0 text-00 text-front mb-000" htmlFor="guard">
             Transition guard function (e.g. <code>(ctx) => ctx.isAllowed</code>)
           </label>
           <input

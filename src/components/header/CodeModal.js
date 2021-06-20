@@ -60,7 +60,7 @@ export default function ImportModal() {
   return (
     <>
       <button
-        className="text-0 hover:bg-gray-300 px-0 py-00 text-theme-front"
+        className="text-0 hover:bg-gray-300 px-0 py-00 text-front"
         onClick={open}>
         <BiCodeCurly />
       </button>
@@ -101,7 +101,7 @@ export default function ImportModal() {
         />
 
         <button
-          className="text-theme-front flex-row items-center hover:text-blue mt-00"
+          className="text-front flex-row items-center hover:text-blue mt-00"
           onClick={handleCopy}>
           <FiClipboard />
           <span className="ml-00 flex-col align-start text-left italic">

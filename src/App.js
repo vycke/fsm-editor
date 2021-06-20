@@ -56,7 +56,7 @@ export default function App({ children }) {
               <Controls />
             </main>
             <Sidebar />
-            <footer className="text-theme-front">
+            <footer className="text-front">
               <a href="https://github.com/crinklesio/fsm-editor">{`v${packageJson.version}`}</a>{' '}
               by <a href="https://crinkles.io">crinkles</a>
             </footer>

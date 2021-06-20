@@ -21,7 +21,7 @@ export default function Modal({ children, title, onClose, visible, state }) {
       tabIndex="-1">
       <div
         data-state={state}
-        className="modal-dialog | bg-theme-back-secondary shadow flex-col radius-00 p-0 text-theme-front"
+        className="modal-dialog | bg-back-secondary shadow flex-col radius-00 p-0 text-front"
         ref={ref}>
         {title && (
           <div className="text-0 flex-row justify-between items-center mb-2">
@@ -29,7 +29,7 @@ export default function Modal({ children, title, onClose, visible, state }) {
             <button
               aria-label="close"
               onClick={onClose}
-              className="text-theme-front flex-row items-center">
+              className="text-front flex-row items-center">
               <FaRegTimesCircle />
             </button>
           </div>

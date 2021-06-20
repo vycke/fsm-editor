@@ -8,7 +8,7 @@ export default function HelpModal() {
   return (
     <>
       <button
-        className="text-0 hover:bg-gray-300 px-0 py-00 text-theme-front"
+        className="text-0 hover:bg-gray-300 px-0 py-00 text-front"
         onClick={open}>
         <FiHelpCircle />
       </button>

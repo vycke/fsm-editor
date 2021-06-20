@@ -23,7 +23,7 @@ export default function TransitionEdge({
   const edgePath = createPath(s, t);
   const [x, y] = getLabelPosition(s, t);
 
-  const color = 'var(--theme-transition)';
+  const color = 'var(--color-transition)';
 
   return (
     <>
@@ -36,11 +36,11 @@ export default function TransitionEdge({
       />
       <foreignObject x={x} y={y} style={{ overflow: 'visible' }}>
         <div className="edge | flex-col items-center" data-selected={selected}>
-          <span className="label | bg-theme-transition text-gray-100 radius-00 px-000 text-00">
+          <span className="label | bg-transition text-gray-100 radius-00 px-000 text-00">
             {data.label}
           </span>
           {data.guard && (
-            <span className="guard | bg-theme-back text-theme-front text-000 px-000 radius-00">
+            <span className="guard | bg-back text-front text-000 px-000 radius-00">
               [{data.guard}]
             </span>
           )}

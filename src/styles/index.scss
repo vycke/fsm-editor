@@ -12,7 +12,7 @@ body,
   font-family: var(--sans-serif);
   background-color: var(--color-gray-500);
   line-height: 1.4;
-  background-color: var(--theme-back);
+  background-color: var(--color-back);
 }
 
 /*******
@@ -75,7 +75,7 @@ a,
 a:link,
 a:visited,
 a:active {
-  color: var(--text-theme-front);
+  color: var(--text-front);
   text-decoration-color: var(--color-blue);
   text-decoration-thickness: 1px;
   transition: var(--transition);
