@@ -7,7 +7,7 @@
 html,
 body,
 .grail {
-  min-width: var(--size-1);
+  min-width: var(--bp-1);
   color: var(--color-gray-100);
   font-family: var(--sans-serif);
   background-color: var(--color-gray-500);
@@ -29,10 +29,6 @@ body,
 
 .no-outline:focus {
   outline: none;
-}
-
-.transition {
-  transition: var(--transition);
 }
 
 .full-width {
@@ -66,8 +62,8 @@ textarea {
 
 footer {
   position: absolute;
-  bottom: var(--spacing-0);
-  left: var(--spacing-0);
+  bottom: var(--size-0);
+  left: var(--size-0);
   z-index: 100;
 }
 
@@ -75,7 +71,7 @@ a,
 a:link,
 a:visited,
 a:active {
-  color: var(--text-front);
+  color: var(--color-front);
   text-decoration-color: var(--color-blue);
   text-decoration-thickness: 1px;
   transition: var(--transition);
@@ -83,10 +79,6 @@ a:active {
 
 a:hover {
   color: var(--color-blue);
-}
-
-.monospace {
-  font-family: var(--monospace);
 }
 
 /* width */

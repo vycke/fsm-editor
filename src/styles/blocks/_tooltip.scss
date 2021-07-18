@@ -7,8 +7,8 @@
   position: absolute;
   line-height: 1.3;
 
-  border-radius: var(--radius-0);
-  padding: var(--spacing-000);
+  border-radius: var(--size-0);
+  padding: var(--size-000);
   background-color: var(--color-gray-300);
   color: var(--color-gray-100);
 
@@ -18,7 +18,7 @@
   transform: translate(-50%, 0);
 
   text-align: center;
-  font-size: var(--text-000);
+  font-size: var(--size-000);
 }
 
 [data-tooltip]:hover::after {

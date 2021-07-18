@@ -5,8 +5,8 @@ import { ReactFlowProvider } from 'react-flow-renderer';
 import packageJson from '../package.json';
 import Sidebar from 'components/sidebar/Sidebar';
 import Controls from 'components/controls/Controls';
-import Header from 'components/header/Header';
 import useAppStore from 'hooks/useStore';
+import Header from 'components/header/Header';
 
 const initial = JSON.parse(localStorage.getItem('elements')) || [];
 

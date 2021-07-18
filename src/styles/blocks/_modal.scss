@@ -16,8 +16,8 @@
 
 .modal-dialog {
   position: relative;
-  margin-top: calc(var(--spacing-3) + 1rem);
-  width: var(--size-3);
+  margin-top: calc(var(--size-3) + 1rem);
+  width: var(--bp-3);
   max-height: 100%;
   background-clip: padding-box;
   outline: 0;

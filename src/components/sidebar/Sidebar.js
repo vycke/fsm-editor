@@ -131,7 +131,7 @@ export default function Sidebar() {
 
       <button
         onClick={handleDelete}
-        className="flex-row items-center justify-center px-00 py-000 text-00 text-gray-100 bg-red hover:bg-red-dark radius-000 full-width shadow transition">
+        className="flex-row items-center justify-center px-00 py-000 text-00 text-gray-100 bg-red hover:bg-red-dark radius-000 full-width shadow -200">
         <FiTrash2 className="mr-00" />
         Delete element
       </button>

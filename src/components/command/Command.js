@@ -7,7 +7,7 @@ export default function Command({ execute, command, search }) {
     <button
       onClick={async () => await execute(command)}
       key={command.key}
-      className="split-left split-w-00 split-min-w-00 px-0 text-left hover:bg-gray-500 py-000">
+      className="panel-l panel-w-00 panel-f-00 px-0 text-left hover:bg-gray-500 py-000">
       <div>
         <span className="text-000 monospace radius-0 px-000 bg-gray-300 text-gray-500">
           {command.group}
