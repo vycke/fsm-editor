@@ -9,8 +9,9 @@
 
   border-radius: var(--size-0);
   padding: var(--size-000);
-  background-color: var(--color-gray-300);
-  color: var(--color-gray-100);
+  background-color: var(--color-gray-200);
+  box-shadow: var(--elevation-3);
+  color: var(--color-gray-500);
 
   bottom: 115%;
   left: 50%;
@@ -18,7 +19,7 @@
   transform: translate(-50%, 0);
 
   text-align: center;
-  font-size: var(--size-000);
+  font-size: var(--size-00);
 }
 
 [data-tooltip]:hover::after {
@@ -29,11 +30,11 @@
   transform: translate(-50%, 0);
   border-width: 5px;
   border-style: solid;
-  border-color: var(--color-gray-300) transparent transparent transparent;
+  border-color: var(--color-gray-200) transparent transparent transparent;
 }
 
 [data-tooltip-position='left']:hover::before {
-  left: calc(100% - 5px);
+  left: calc(100% - 6px);
   top: 50%;
   bottom: auto;
   transform: translate(0, -50%);

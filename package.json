@@ -1,12 +1,12 @@
 {
   "name": "fsm-editor",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "private": true,
   "dependencies": {
-    "@crinkles/digl": "^0.2.4",
-    "@crinkles/feo": "^2.1.2",
-    "@crinkles/fsm": "^0.6.0",
-    "@crinkles/pubbel": "^2.0.1",
+    "@crinkles/digl": "^0.4.0",
+    "@crinkles/feo": "^2.2.4",
+    "@crinkles/fsm": "^0.10.3",
+    "@crinkles/pubbel": "^2.1.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",

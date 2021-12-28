@@ -1209,25 +1209,25 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@crinkles/digl@^0.2.4":
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/@crinkles/digl/-/digl-0.2.4.tgz#13fee7a09a1bd31d659c96c9cd61859a0241f39f"
-  integrity sha512-ScL6CKQWTf1UTFIRxTYyYMKW9vVpuJkcoXOjdpEVrtW3IURH4jU141sqwZG77AiTClbnEaU/GhTPfaG+01TSog==
+"@crinkles/digl@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@crinkles/digl/-/digl-0.4.0.tgz#5c4f2734534cffefa894969a9b7c9282d2f203bc"
+  integrity sha512-+wOgXZxp/ot3svvogxZ6rEmY8ygsyqd1+PLNu0tNoKNs96GR4DA36NcW8sI0UQ5T1F/dDhb/kacdaS4+LDzRxA==
 
-"@crinkles/feo@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@crinkles/feo/-/feo-2.1.2.tgz#a6fe8c583d1c54c15b69a84e648e876da9a84424"
-  integrity sha512-tbY5lZheIFTp1NZmicgbHJbUAE6EuyGwd540Grk5aCJMN15jj6ywSco59hGBlpOCxSu+d6tjVv8a3tCsIGCFaA==
+"@crinkles/feo@^2.2.4":
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/@crinkles/feo/-/feo-2.2.4.tgz#27382cd1c05cfa482f93da3b3fe894dfa4286f16"
+  integrity sha512-woeGKYVrNXyIokTwSuWcEOubYHRRnF68c5JQA3HQphMMnkkY7VmxuxF6aMMZZD9CRE3bbSpXasw7FzND9OScRQ==
 
-"@crinkles/fsm@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@crinkles/fsm/-/fsm-0.6.0.tgz#52c711f0e7a575343b547906e0a7dc5eed03b7b7"
-  integrity sha512-wxYzN4EylTeJjqtj6VfI5AeWvb19zyWQFP1g/T0K80FEyTubrWtN7WpC5wovxXH88z9d+Zm7fSRsN9ENFwLc4Q==
+"@crinkles/fsm@^0.10.3":
+  version "0.10.3"
+  resolved "https://registry.yarnpkg.com/@crinkles/fsm/-/fsm-0.10.3.tgz#0ab97e21c6957b869edf7f3f3e76f4a07341e612"
+  integrity sha512-x+FBkkdUj6QEARH80rQmM4xphH1CatkgDTGW+FknIUhpWNeUns3NPzTO3L8g0RUjOVg0Ag1uaNaVo7MdYYoGMA==
 
-"@crinkles/pubbel@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@crinkles/pubbel/-/pubbel-2.0.1.tgz#8b989e1dc94866467c7db509a8100008b39817ac"
-  integrity sha512-HOM6Sq0EopjQ2eKv04rrtIlu2ByELKZqnWQLPbExiukbZ7HVnUV3IpjmgHT64P0kvAODjw38stdRxQ52CT3pLw==
+"@crinkles/pubbel@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@crinkles/pubbel/-/pubbel-2.1.0.tgz#1d8a30f9d9d528e3358dde7916496dd8adf19596"
+  integrity sha512-lK7sAJKPBzrw3z6i0S4oKExWoWf/ZImsjn5HYLw91X6fu+qYvI95GAT5TJb9WxKsYBZyqyXPN3392wfNf32ChQ==
 
 "@csstools/convert-colors@^1.4.0":
   version "1.4.0"

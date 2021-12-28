@@ -61,7 +61,7 @@ export default function CommandPalette() {
   return (
     <>
       <button
-        className="text-0 hover:bg-gray-300 px-0 py-00 text-front"
+        className="text-1 hover:bg-gray-300 px-0 py-00 text-front"
         onClick={open}>
         <FiTerminal />
       </button>

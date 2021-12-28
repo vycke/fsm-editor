@@ -1,6 +1,12 @@
 import { digl } from '@crinkles/digl';
 
-const layoutConfig = { width: 165, height: 75, orientation: 'horizontal' };
+const layoutConfig = {
+  width: 165,
+  height: 75,
+  orientation: 'horizontal',
+  shortestPath: true,
+  addEmptySpots: true,
+};
 
 function findRankPosition(ranks, edge) {
   let p1, p2;
@@ -18,7 +24,7 @@ function findRankPosition(ranks, edge) {
 export default function autoLayout(start, nodes, edges, orientation) {
   const layout = digl({ ...layoutConfig, orientation });
   const positions = layout.positions(start, nodes, edges);
-  const ranks = layout.ranks(start, edges);
+  const ranks = layout.ranks(start, nodes, edges);
 
   const positionedNodes = nodes.map((n) => {
     const pos = positions.find((r) => r.id === n.id);

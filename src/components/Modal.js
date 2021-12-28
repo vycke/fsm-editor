@@ -25,11 +25,11 @@ export default function Modal({ children, title, onClose, visible, state }) {
         ref={ref}>
         {title && (
           <div className="text-0 flex-row justify-between items-center mb-2">
-            <span className="mr-2">{title}</span>
+            <span className="mr-2 text-1">{title}</span>
             <button
               aria-label="close"
               onClick={onClose}
-              className="text-front flex-row items-center">
+              className="text-front flex-row items-center text-1">
               <FaRegTimesCircle />
             </button>
           </div>

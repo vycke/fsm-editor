@@ -1,5 +1,6 @@
 button[role='switch'] {
   height: calc(1.4rem + 4px);
+  padding: 0;
   background-color: var(--color-gray-300);
   border: 2px solid var(--color-gray-300);
   border-radius: 1rem;

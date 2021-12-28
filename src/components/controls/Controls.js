@@ -39,6 +39,7 @@ export default function Controls() {
     if (!start) return;
     const config = stringifyMachine(nodes, edges);
     const machine = configToMachine(start, orientation, config);
+
     if (!machine) return;
     setSelected([]);
     setElements(machine);

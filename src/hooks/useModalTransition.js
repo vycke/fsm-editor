@@ -3,18 +3,18 @@ import useFsm from './useFsm';
 
 const config = {
   appearing: {
-    on: { FINISHED: 'visible' },
-    entry: send('FINISHED', 50),
+    FINISHED: 'visible',
+    _entry: [() => send('FINISHED', null, 50)],
   },
   visible: {
-    on: { CLOSE: 'dissapearing' },
+    CLOSE: 'dissapearing',
   },
   dissapearing: {
-    on: { FINISHED: 'removed' },
-    entry: send('FINISHED', 500),
+    FINISHED: 'removed',
+    _entry: [() => send('FINISHED', null, 500)],
   },
   removed: {
-    on: { OPEN: 'appearing' },
+    OPEN: 'appearing',
   },
 };
 

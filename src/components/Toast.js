@@ -5,16 +5,12 @@ import { createPortal } from 'react-dom';
 
 const states = {
   visible: {
-    on: {
-      REMOVED: 'notvisible',
-      CREATED: 'visible',
-    },
-    entry: send('REMOVED', 6000),
+    REMOVED: 'notvisible',
+    CREATED: 'visible',
+    _entry: [() => send('REMOVED', 6000)],
   },
   notvisible: {
-    on: {
-      CREATED: 'visible',
-    },
+    CREATED: 'visible',
   },
 };
 

@@ -27,7 +27,7 @@ export default function Header() {
       <CommandBar />
 
       <button
-        className="text-0 hover:bg-gray-300 px-0 py-00 text-front"
+        className="text-1 hover:bg-gray-300 px-0 py-00 text-front"
         onClick={downloadImage}>
         <FiImage />
       </button>
