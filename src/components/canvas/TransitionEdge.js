@@ -34,7 +34,12 @@ export default function TransitionEdge({
         className="react-flow__edge-path"
         d={edgePath}
       />
-      <foreignObject x={x} y={y} style={{ overflow: 'visible' }}>
+      <foreignObject
+        x={x}
+        y={y}
+        width="1"
+        height="1"
+        style={{ overflow: 'visible' }}>
         <div className="edge | flex-col items-center" data-selected={selected}>
           <span className="label | bg-transition text-gray-100 radius-00 px-000 text-00">
             {data.label}

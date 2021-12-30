@@ -1,13 +1,12 @@
 import { useCallback, useContext, useEffect, useState } from 'react';
 import Modal from '../Modal';
 import useToastManager from '../Toast';
-import useAppStore, { store } from 'hooks/useStore';
+import useAppStore from 'hooks/useStore';
 import { configToMachine } from 'helpers/configToMachine';
 import { AppContext } from 'App';
 import { useStoreState, useZoomPanHelper } from 'react-flow-renderer';
 import { BiCodeCurly } from 'react-icons/bi';
 import { FiClipboard, FiDownload } from 'react-icons/fi';
-import Switch from 'components/Switch';
 import { stringifyMachine } from 'helpers/machineToConfig';
 import findStart from 'helpers/findStart';
 import useModalTransition from 'hooks/useModalTransition';
@@ -69,18 +68,6 @@ export default function ImportModal() {
         onClose={close}
         state={state}
         visible={visible}>
-        <div className="flex-row items-center mb-0">
-          <span className="mr-0">Horizontal orientation:</span>
-          <Switch
-            checked={orientation === 'horizontal'}
-            onClick={() =>
-              store.update('orientation', (h) =>
-                h === 'horizontal' ? 'vertical' : 'horizontal'
-              )
-            }
-          />
-        </div>
-
         <label className="text-00 text-gray-200 mb-000" htmlFor="name">
           Name of start state
         </label>
@@ -95,7 +82,7 @@ export default function ImportModal() {
         <span className="italic text-00">You can edit the below content!</span>
         <textarea
           rows={10}
-          className={`${codeColor} p-1 pb-3 full-width text-gray-100 text-000 border-gray-400 focus:border-blue border-w-2 no-outline radius-000`}
+          className={`${codeColor} p-1 pb-3 full-width text-gray-100 text-00 border-gray-400 focus:border-blue border-w-2 no-outline radius-000`}
           onChange={(e) => setConfig(e.target.value)}
           value={config || ''}
         />

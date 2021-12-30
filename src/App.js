@@ -23,7 +23,7 @@ export default function App({ children }) {
       setElements((es) =>
         es.map((e) => {
           if (e.id !== id) return e;
-          e.data[field] = value.target.value;
+          e.data[field] = value;
 
           return e;
         })

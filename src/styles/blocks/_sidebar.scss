@@ -11,6 +11,6 @@
   padding: 0px;
 }
 
-.sidebar button {
+.sidebar button[data-type='delete'] {
   margin-top: auto;
 }

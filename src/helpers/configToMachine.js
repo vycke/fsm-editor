@@ -7,14 +7,8 @@ function getStates(config) {
 
   for (const key in config) {
     const state = { id: key, type: 'state', data: { label: key } };
-    if (config[key].entry) {
-      const token = config[key].entry.split("send('")[1];
-      const action = token.split("'")[0];
-      const delay = token.split(',')?.[1]?.replaceAll(' ', '');
-
-      if (action) state.data.entry = action;
-      if (delay) state.data.delay = delay;
-    }
+    if (config[key]._entry) state.data._entry = config[key]._entry;
+    if (config[key]._exit) state.data._exit = config[key]._exit;
     states.push(state);
   }
 
@@ -25,7 +19,7 @@ export function getTransitions(config) {
   const edges = [];
 
   for (const source in config) {
-    const transitions = config[source].on;
+    const { _entry, _exit, ...transitions } = config[source];
 
     for (const name in transitions) {
       const t = transitions[name];
@@ -39,7 +33,8 @@ export function getTransitions(config) {
         data: { label: name },
       };
 
-      if (t?.cond) edge.data.guard = t?.cond;
+      if (t?.guard) edge.data.guard = t.guard;
+      if (t?.actions) edge.data.actions = t.actions;
       edges.push(edge);
     }
   }
@@ -49,13 +44,12 @@ export function getTransitions(config) {
 
 export function configToMachine(start, orientation, config) {
   const string = config
-    .replaceAll(/"cond": (.*?),*\n/gm, '"cond": "$1"\n')
-    .replaceAll(/"entry": (.*?),*\n/gm, '"entry": "$1",\n')
-    .replaceAll(/,\n]\s^"/gm, '\n');
+    .replaceAll(/\((.*?),*\n/gm, '"($1",\n')
+    .replaceAll(/,\n\s*]/gm, '\n]')
+    .replaceAll(/,\n\s*}/gm, '\n}');
 
   try {
     const newConfig = JSON.parse(string);
-
     const nodes = getStates(newConfig);
     const edges = getTransitions(newConfig);
 

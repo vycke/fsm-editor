@@ -4,29 +4,26 @@ function machineToConfig(nodes, edges) {
   const config = {};
   nodes.forEach((n) => {
     config[n.data.label] = {};
-    if (n.data.entry) {
-      const str = `[send('${n.data.entry}', ${n.data.delay || 0})]`.replace(
-        ', 0',
-        ''
-      );
-      config[n.data.label].entry = str;
-    }
+    if (n.data?._entry?.length)
+      config[n.data.label]._entry = n.data._entry.map((a) => `{{${a}}}`);
+    if (n.data?._exit?.length)
+      config[n.data.label]._exit = n.data._exit.map((a) => `{{${a}}}`);
   });
 
   edges.forEach((e) => {
     const { data: source } = nodes.find((n) => n.id === e.source);
     const { data: target } = nodes.find((n) => n.id === e.target);
 
-    if (!config[source.label].on) config[source.label].on = {};
+    if (e.data.guard || e.data?.actions?.length)
+      config[source.label][e.data.label] = { target: target.label };
+    else config[source.label][e.data.label] = target.label;
 
-    if (e.data.guard) {
-      config[source.label].on[e.data.label] = {
-        target: target.label,
-        cond: `[${e.data.guard}]`,
-      };
-    } else {
-      config[source.label].on[e.data.label] = target.label;
-    }
+    if (e.data.guard)
+      config[source.label][e.data.label].guard = `{{${e.data.guard}}}`;
+    if (e.data?.actions?.length)
+      config[source.label][e.data.label].actions = e.data.actions.map(
+        (a) => `{{${a}}}`
+      );
   });
 
   return config;
@@ -35,6 +32,6 @@ function machineToConfig(nodes, edges) {
 // prepare for copy to clipboard
 export function stringifyMachine(nodes, edges) {
   return JSON.stringify(machineToConfig(nodes, edges), null, 2)
-    .replaceAll('"[', '')
-    .replaceAll(']"', '');
+    .replaceAll('"{{', '')
+    .replaceAll('}}"', '');
 }

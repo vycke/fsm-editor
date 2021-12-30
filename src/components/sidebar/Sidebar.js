@@ -7,8 +7,7 @@ import { useContext, useEffect, useRef } from 'react';
 import { FiTrash2 } from 'react-icons/fi';
 import { AppContext } from 'App';
 import useAutoOpen from 'hooks/useAutoOpen';
-
-const DEFAULT_ACTION = 'NO_ENTRY_ACTION';
+import ActionList from './ActionList';
 
 export default function Sidebar() {
   const { updateElement, setElements } = useContext(AppContext);
@@ -41,23 +40,23 @@ export default function Sidebar() {
     close();
   }
 
-  function setEntryAction(v) {
-    if (v?.target?.value === DEFAULT_ACTION)
-      updateElement('entry', selected?.id)({ target: { value: null } });
-    else updateElement('entry', selected?.id)(v);
+  // Add action to list
+  function addAction(type) {
+    updateElement(type, selected?.id)([...(selected?.data?._entry || []), '']);
+  }
 
-    if (isEdge) return;
+  // Remove action from a list based on index
+  function removeAction(index, type) {
+    const _actions = selected?.data?.[type] || [];
+    _actions.splice(index, 1);
+    updateElement(type, selected?.id)(_actions);
+  }
 
-    // Set animation on auto-transition
-    const edgeIds = edges.map((e) => e.id);
-
-    setElements((els) => {
-      return els.map((e) => {
-        if (!edgeIds.includes(e.id)) return e;
-        if (e.data.label === v.target.value) return { ...e, animated: true };
-        return { ...e, animated: false };
-      });
-    });
+  // update action based on index & input
+  function updateAction(index, value, type) {
+    const _actions = selected?.data?.[type] || [];
+    _actions[index] = value;
+    updateElement(type, selected?.id)(_actions);
   }
 
   return (
@@ -78,40 +77,25 @@ export default function Sidebar() {
         className="px-00 py-000 radius-000 border-gray-400 focus:border-blue border-w-2 no-outline full-width"
       />
 
-      {!isEdge && edges?.length > 0 && (
-        <>
-          <label className="text-00 text-front mt-0 mb-000" htmlFor="entry">
-            State entry action
-          </label>
-          {/* eslint-disable-next-line jsx-a11y/no-onchange */}
-          <select
-            onChange={setEntryAction}
-            id="entry"
-            value={selected?.data?.entry ?? 'default'}
-            className="px-00 py-00 radius-000 border-gray-400 focus:border-blue border-w-2 no-outline full-width">
-            <option value={DEFAULT_ACTION}>---</option>
-            {edges?.map((e, i) => (
-              <option key={i} value={e.data.label}>
-                {e.data.label}
-              </option>
-            ))}
-          </select>
-        </>
+      {!isEdge && (
+        <ActionList
+          title="Entry actions"
+          className="mt-0"
+          actions={selected?.data?._entry}
+          onAdd={() => addAction('_entry')}
+          onRemove={(i) => removeAction(i, '_entry')}
+          onChange={(i, value) => updateAction(i, value, '_entry')}
+        />
       )}
-
-      {!isEdge && selected?.data?.entry && (
-        <>
-          <label className="mt-0 text-00 text-front mb-000" htmlFor="delay">
-            State entry delay
-          </label>
-          <input
-            id="delay"
-            placeholder="e.g. 3000"
-            value={selected?.data?.delay ?? ''}
-            onChange={updateElement('delay', selected?.id)}
-            className="px-00 py-000 radius-000 border-gray-400 focus:border-blue border-w-2 no-outline full-width"
-          />
-        </>
+      {!isEdge && (
+        <ActionList
+          title="Exit actions"
+          className="mt-0"
+          actions={selected?.data?._exit}
+          onAdd={() => addAction('_exit')}
+          onRemove={(i) => removeAction(i, '_exit')}
+          onChange={(i, value) => updateAction(i, value, '_entry')}
+        />
       )}
 
       {isEdge && (
@@ -128,8 +112,19 @@ export default function Sidebar() {
           />
         </>
       )}
+      {isEdge && (
+        <ActionList
+          title="Actions"
+          className="mt-0"
+          actions={selected?.data?.actions}
+          onAdd={() => addAction('actions')}
+          onRemove={(i) => removeAction(i, 'actions')}
+          onChange={(i, value) => updateAction(i, value, 'actions')}
+        />
+      )}
 
       <button
+        data-type="delete"
         onClick={handleDelete}
         className="flex-row items-center justify-center px-00 py-000 text-00 text-gray-100 bg-red hover:bg-red-dark radius-000 full-width shadow -200">
         <FiTrash2 className="mr-00" />
