@@ -1,6 +1,7 @@
 import { Handle } from 'react-flow-renderer';
 
 export default function StateNode({ data, selected, id, ...props }) {
+  console.log({ data });
   return (
     <div
       className="node | bg-blue text-0 text-gray-100 radius-000 py-000 px-0 border-solid border-w-2"

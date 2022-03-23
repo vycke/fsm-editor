@@ -42,7 +42,7 @@ export default function Sidebar() {
 
   // Add action to list
   function addAction(type) {
-    updateElement(type, selected?.id)([...(selected?.data?._entry || []), '']);
+    updateElement(type, selected?.id)([...(selected?.data?.[type] || []), '']);
   }
 
   // Remove action from a list based on index
@@ -73,7 +73,7 @@ export default function Sidebar() {
         placeholder="Element name"
         onFocus={(e) => e.target.select()}
         value={selected?.data?.label ?? ''}
-        onChange={updateElement('label', selected?.id)}
+        onChange={(e) => updateElement('label', selected?.id)(e.target.value)}
         className="px-00 py-000 radius-000 border-gray-400 focus:border-blue border-w-2 no-outline full-width"
       />
 
@@ -94,7 +94,7 @@ export default function Sidebar() {
           actions={selected?.data?._exit}
           onAdd={() => addAction('_exit')}
           onRemove={(i) => removeAction(i, '_exit')}
-          onChange={(i, value) => updateAction(i, value, '_entry')}
+          onChange={(i, value) => updateAction(i, value, '_exit')}
         />
       )}
 
